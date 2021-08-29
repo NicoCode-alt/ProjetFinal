@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zitics{% endblock %}
+
+{% block body %}
+
+  <div class="card" style="width: 100%;">
+    <img src="https://source.unsplash.com/1024x200" class="card-img-top" style="max-height:200px" alt="...">
+    <div class="card-body">
+      <h3 class="card-title">Nom de l'artiste</h3>
+      <h5 class="card-author">Auteur</h5>
+      <p class="card-text">{{ critic.content }}</p>
+      <p class="card-text">{{ critic.createdAt | date("d/m/Y") }}</p>
+      <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
+    </div>
+  </div>
+{% endblock %}

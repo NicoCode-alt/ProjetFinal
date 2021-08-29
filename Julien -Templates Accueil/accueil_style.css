@@ -1,0 +1,172 @@
+/*
+
+FUTURE POLICE D'ECRITURE
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.padding_bloc {
+    padding: 2rem;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.background {
+    background: url('assets/img_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 80%;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.45);
+}
+
+/* 
+.title / .anim_title / @keyframes typewriter / @keyframes blinkTextCursor et 
+.typing sont les classes pour l'animation de mon titre h1 "Zikrik vous souhaite la bienvenue.,"
+*/
+.title {    
+    margin: 0 auto;
+    margin-top: 4rem;
+    font-size: 4em;
+    border-right: 3px solid rgba(0, 0, 0, 0.70);   
+    white-space: nowrap;
+    overflow: hidden; 
+    color: rgb( 255, 255, 255);
+}
+
+.anim_title {
+    animation: typewriter 1s steps(44) 1s 1 normal both,
+               blinkTextCursor 500MS steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+    from{width: 0em;}
+    to{width: 3em;}
+}
+
+@keyframes blinkTextCursor {
+    from{border-right-color: rgb( 0, 0, 0);}
+    to{border-right-color: transparent;}
+}
+
+.title_welcome {
+    font-size: 2em;
+    margin-top: 1rem;
+    color: rgb( 255, 255, 255);
+}
+
+/* 
+Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed 
+*/
+.header {
+	position: relative;
+	z-index: 10;
+}
+
+.fixed {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+.margin_left_nav img {
+    margin-right: 1rem;
+}
+
+.container_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 2rem;
+}
+
+.image_size img{
+    height: 100%;
+}
+
+.user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.comment p {
+    text-align: justify;
+}
+
+.fonction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+footer {
+    margin: 2rem;
+}
+
+.copyright {
+    margin-top: 1rem;
+}
+
+.text_typing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 2em;
+}
+
+.logo_footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.logo_footer img {
+    margin: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .container_card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+	
+}
+
+@media all and (max-width: 992px) {
+
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+
+}

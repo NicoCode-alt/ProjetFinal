@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zitics{% endblock %}
+
+{% block body %}
+
+    <h1>Les critiques de musique</h1>
+    <hr>
+    <div class="row">
+        {% for critic in critics %}
+        <div class="col-4 container card" style="width:25rem;">
+            <div class="p-2">
+                {{ critic.content }}
+            </div>
+        
+            <div class="d-flex justify-content-end pb-2">
+                <div><a class="btn btn-success btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">Voir</a></div>
+                {{ critic.createdAt | date("d/m/Y") }}  
+                Auteur
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+{% endblock %}

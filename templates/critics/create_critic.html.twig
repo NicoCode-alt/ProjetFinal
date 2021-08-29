@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formulaire 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Zitics{% endblock %}
+
+{% block body %}
+
+    <h1>{% if modeEdition %}Modifiez votre critique{% else %}Envoyez votre critique{% endif %}</h1>
+
+    <div class="container col-md-6">
+    
+        {{ form_start(formulaire) }}
+
+            {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
+            
+            <button class="btn btn-primary" type="submit">
+            Enregistrer {% if modeEdition %}les modifications {% endif %}
+            </button>
+        {{ form_end(formulaire) }}
+    </div>
+{% endblock %}
