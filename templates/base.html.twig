@@ -24,7 +24,10 @@
     	    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
             <!-- Feuille de style CSS public/style/base.css -->
-		    <link rel="stylesheet" href="{{ asset('assets/style/base.css') }}">
+		    <link rel="stylesheet" href="{{ asset('assets/style/base.css') }}"> <!-- POUR LA TEMPLATE base.html.twig DANS DOSSIER STORE, NAV BAR FOOTER -->
+            <link rel="stylesheet" href="{{ asset('assets/style/critics.css') }}"> <!-- POUR LA TEMPLATE CRITICS.html.twig DANS DOSSIER CRITICS, TITRE BACKGROUND & CARDS -->
+            <link rel="stylesheet" href="{{ asset('assets/style/login.css') }}"> <!-- POUR LA TEMPLATE LOGIN.html.twig DANS DOSSIER AUTH, FORMULAIRE CONNEXION -->
+            <link rel="stylesheet" href="{{ asset('assets/style/register.css') }}"> <!-- POUR LA TEMPLATE index.html.twig DANS DOSSIER AUTH, FORMULAIRE INSCRIPTION -->
         {% endblock %}
 
         {% block javascripts %}

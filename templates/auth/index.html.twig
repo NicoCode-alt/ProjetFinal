@@ -1,16 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enregistrement{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Enregistrement</h1>
+
     {{form_start(formulaire)}}
 
-        {{form_row(formulaire.username)}}
-        {{form_row(formulaire.email)}}
-        {{form_row(formulaire.password)}}
-        {{form_row(formulaire.passwordConfirm)}}
+        <div class="container_register">
+			<div class="background_register" style="background-image: url('{{ asset('assets/images/img_inscription.jpg') }}')">
+				<div class="overlay_register">
+					<div class="bloc_central_register">
+						<h1 class="title_register">Inscription :</h1>
+						<form action="..." method="post">
+							<div class="row responsive_button_register">
 
-    <button type="submit" class="btn btn-primary">S'enregistrer</button>
+								<div class="col-md-2"></div>
+									<div class="col-md-4">
+										<label for="firstname">Nom :</label>
+										<input type="text" name="firstname" id="firstname" class="form-control" required minlength="3">
+									</div>
+									<div class="col-md-4">
+										<label for="secondname">Prenom :</label>
+										<input type="text" name="secondname" id="secondname" class="form-control" required minlength="3">
+									</div>
+								<div class="col-md-2"></div>
+
+								<div class="col-md-2"></div>
+									<div class="col-md-4">
+										{{form_row(formulaire.username)}}
+									</div>
+									<div class="col-md-4">
+										<label for="date">Date d'anniversaire :</label>
+										<input type="date" name="date" id="date" class="form-control" required minlength="3">
+									</div>
+								<div class="col-md-2"></div>
+							
+								<div class="col-md-2"></div>
+									<div class="col-md-8">
+										{{form_row(formulaire.email)}}
+									</div>
+								<div class="col-md-2"></div>
+
+								<div class="col-md-2"></div>
+									<div class="col-md-4">
+										{{form_row(formulaire.password)}}
+									</div>
+									<div class="col-md-4">
+										{{form_row(formulaire.passwordConfirm)}}
+									</div>
+								<div class="col-md-2"></div>
+		
+								<div class="col-12 mt-3 d-flex justify-content-center">
+									<button class="btn btn-primary">S'inscrire</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+        
     {{form_end(formulaire)}}
+
 {% endblock %}

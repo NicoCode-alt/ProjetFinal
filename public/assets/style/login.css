@@ -1,0 +1,60 @@
+/* CODE CSS POUR LE FORMULAIRE DE CONNEXION DE LA PAGE login.html.twig DANS DOSSIER AUTH */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container_login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-top: 3rem;
+}
+
+.background_login {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 80%;
+	width: 80%;
+}
+
+.overlay_login {
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bloc_central_login {
+    margin: 3rem;
+}
+
+.title_login {
+	text-align: center;
+	font-weight: bold;
+}
+
+label {
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 992px) {
+
+    .background_login {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .responsive_button_login {
+        margin: auto;
+        width: 70%;
+    }
+}

@@ -1,0 +1,120 @@
+/* CODE CSS POUR LE BACKGROUND ET LES TITRES DE LA PAGE D'ACCUEIL critics_index.html.twig DANS DOSSIER TEMPLATE */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 80%;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.45);
+}
+
+/* 
+.title / .anim_title / @keyframes typewriter / @keyframes blinkTextCursor et 
+.typing sont les classes pour l'animation de mon titre h1 "Zikrit vous souhaite la bienvenue.,"
+*/
+.title {    
+    margin: 0 auto;
+    margin-top: 4rem;
+    font-size: 4em;
+    border-right: 3px solid rgba(0, 0, 0, 0.70);   
+    white-space: nowrap;
+    overflow: hidden; 
+    color: rgb( 255, 255, 255);
+}
+
+.anim_title {
+    animation: typewriter 1s steps(44) 1s 1 normal both,
+               blinkTextCursor 500MS steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+    from{width: 0em;}
+    to{width: 3em;}
+}
+
+@keyframes blinkTextCursor {
+    from{border-right-color: rgb( 0, 0, 0);}
+    to{border-right-color: transparent;}
+}
+
+.title_welcome {
+    font-size: 2em;
+    margin-top: 1rem;
+    color: rgb( 255, 255, 255);
+}
+
+/* CODE CSS POUR LES CARDS DE LA PAGE D'ACCUEIL critics_index.html.twig DANS DOSSIER TEMPLATE */
+
+.container_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 2rem;
+}
+
+.image_size img{
+    height: 100%;
+}
+
+.user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.comment p {
+    text-align: justify;
+}
+
+.fonction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .container_card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .background {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .image_size {
+        height: 20vh;
+    }
+}
