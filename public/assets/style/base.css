@@ -26,7 +26,7 @@ Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed
     animation: type 2s steps(50) infinite;
     overflow: hidden;
     white-space: nowrap;
-    width: 13ch;
+    width: 12ch;
 }
 
 @keyframes type {
@@ -34,7 +34,7 @@ Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed
         width: 0ch;
     }
     100% {
-        width: 13ch;
+        width: 12ch;
     }
 }
 
