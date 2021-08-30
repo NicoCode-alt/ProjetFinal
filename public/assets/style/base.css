@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed 
+*/
+.header {
+	position: relative;
+	z-index: 10;
+}
+
+.fixed {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+.logo_nav {
+    margin-right: 1rem;
+}
+
+.logo_title_nav {
+    animation: type 2s steps(50) infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 13ch;
+}
+
+@keyframes type {
+    0% {
+        width: 0ch;
+    }
+    100% {
+        width: 13ch;
+    }
+}
+
+footer {
+    margin: 2rem;
+}
+
+.copyright {
+    margin-top: 1rem;
+}
+
+.text_typing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 2em;
+}
+
+.logo_footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.logo_footer img {
+    margin: 1rem;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1200px) {
+
+    .logo_title_nav {
+        animation: none;
+    }
+
+    .responsive_footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+
+    .copyright {
+        width: auto;
+    }
+
+    .text_typing {
+        width: auto;
+        margin-top: 2rem;
+    }
+
+    .logo_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: auto;
+    }
+}
