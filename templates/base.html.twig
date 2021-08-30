@@ -66,15 +66,12 @@
 
 					<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link active"  href="#">Accueil</a>
-							</li>
-                            <li class="nav-item">
-								<a class="nav-link active"  href="#">Musicotheque</a>
-							</li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('critics_index')}}">Les critiques</a>
                             </li>
+                            <li class="nav-item">
+								<a class="nav-link active"  href="#">Musicotheque</a>
+							</li>
                                 {# {% if app.user %} #}
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('create_critic')}}">Ajouter une critique</a>
@@ -83,13 +80,13 @@
                                 {% else %} #}
                                 {# {% endif %} #}
 							<li class="nav-item">
-								<a class="nav-link active" href="#">Inscription</a>
+								<a class="nav-link active" href="{{ path('register')}}">Inscription</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" href="#">Connexion</a>
+								<a class="nav-link active" href="{{ path('login')}}">Connexion</a>
 							</li>
                             <li class="nav-item">
-								<a class="nav-link active" href="#">Déconnexion</a>
+								<a class="nav-link active" href="{{ path('logout')}}">Déconnexion</a>
 							</li>
 						</ul>
 					</div>
@@ -97,203 +94,30 @@
 			</nav>
 		</header>
 
-        <div class="container_card">
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_1.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                            <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_2.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                        <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container_card">
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_3.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                            <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_4.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                        <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container_card">
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_1.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                            <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-5">
-                <div class="row g-0">
-                    <div class="col-md-4 image_size">
-                        <img src="assets/img_2.jpg" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                        <div class="user">
-                                <p>Pseudo</p>
-                                <p>CreatedAt</p>
-                            </div>
-                            <div class="comment mt-2">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc odio.
-                                Aliquam sed lobortis ex. Vestibulum maximus fermentum nulla, ac fringilla felis imperdiet nec.
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <p class="pt-3">Like/dislike</p>
-                                <button type="button" class="btn btn-primary btn-sm">Voir la carte</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container pt-3">
             {% block body %}
-
-            
             
             {% endblock %}
         </div>
 
         <footer>
             <div class="row responsive_footer">
-                <div class="col-2 text-center copyright">
+                <div class="col-4 text-center copyright">
                     <div>
                         <p><img src="{{ asset('assets/images/copyright.png') }}" width="40px" height="40px" alt="Logo copyright">opyright 2021</p>
-                        <p class="text-start">Produit destiner à l'obtention de la certification Front & Back end de WebForce3.</p>
+                        <p class="p_footer">Produit destiner à l'obtention de la certification Front & Back end de WebForce3.</p>
                         <img class="" src="{{ asset('assets/images/guitar_64px.png') }}" width="64px" height="64px" alt="Logo d'une guitare">
                         
                     </div>
                 </div>
 
-                <div class="col-8 text_typing">
+                <div class="col-4 text_typing">
                     <div class="typing">
                         <p class="typewrite"></p>
                     </div>
                 </div>
 
-                <div class="col-2 logo_footer">
+                <div class="col-4 logo_footer">
                     <div>
                         <div>
                             <a href="">
@@ -302,16 +126,15 @@
                             <a href="">
                                 <img src="{{ asset('assets/images/instagram.png') }}" width="40px" height="40px" alt="Logo instagram">
                             </a>
-                        </div>
-                        <div>
                             <a href="">
                                 <img src="{{ asset('assets/images/linkedin.png') }}" width="40px" height="40px" alt="Logo linkedin">
                             </a>
+                        </div>
+                        
+                        <div>
                             <a href="">
                                 <img src="{{ asset('assets/images/github-logo.png') }}" width="40px" height="40px" alt="Logo github">
                             </a>
-                        </div>
-                        <div>
                             <a href="">
                                 <img src="{{ asset('assets/images/twitter.png') }}" width="40px" height="40px" alt="Logo twitter">
                             </a>
