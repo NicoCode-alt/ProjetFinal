@@ -14,4 +14,38 @@
       <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
     </div>
   </div>
+
+  <div class="border">
+
+    {% if critic.commentaries|length == 0 %}
+    <hr>
+    <p><strong>Il n'y a pas de commentaire</strong></p>
+    {% else %}
+    {% for commentaire in critic.commentaries %}
+    <hr>
+        <br>
+        <p>{{ commentaire.content }}</p>
+        <hr>
+        <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
+      {% endfor %}
+    {% endif %}
+</div>
+
+<div class="border">
+
+  {# {% if app.user %} #}
+    {{form_start(formulaire)}}
+
+      {{ form_row(formulaire.content) }}
+
+      <button type="submit" class="btn btn-success">Envoyer</button>
+
+    {{form_end(formulaire)}}
+
+  {# {% else %}
+    <p>Veuillez vous connecter pour laisser un commentaire</p>
+    <button href="{{ path('login') }}" class="btn btn-success">Connexion</button>
+  {% endif %} #}
+</div>
+
 {% endblock %}

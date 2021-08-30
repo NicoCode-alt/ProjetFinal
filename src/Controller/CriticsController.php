@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentary;
 use App\Entity\Critic;
 use App\Form\CriticType;
+use App\Form\CommentaryType;
+use App\Repository\CommentaryRepository;
 use App\Repository\CriticRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,28 +29,28 @@ class CriticsController extends AbstractController
     /**
      * @Route("/critic/{id}", name="view_critic")
      */
-    public function show(Critic $critic):Response
+    public function show(Critic $critic, CommentaryRepository $commentaryRepository, Request $request, EntityManagerInterface $manager):Response
     {
-        // $commentaire = new commentaire();
-        // $formulaire = $this->createForm(CommentaireType::class, $commentaire);
+        $comment = new Commentary();
+        $formulaire = $this->createForm(CommentaryType::class, $comment);
 
-        // $formulaire->handleRequest($request);
+        $formulaire->handleRequest($request);
 
-        // if($formulaire->isSubmitted() && $formulaire->isValid()){
-        //     $commentaire->setCreatedAt(new \DateTime());
-        //     $commentaire->setLieu($critic);
-        //     $commentaire->setAuthor($this->getUser());  
+        if($formulaire->isSubmitted() && $formulaire->isValid()){
+            $comment->setCreatedAt(new \DateTime());
+            $comment->setCritic($critic);
+            // $comment->setAuthor($this->getUser());  
 
-        //     $manager->persist($commentaire);
-        //     $manager->flush();
+            $manager->persist($comment);
+            $manager->flush();
 
-        //     return $this->redirectToRoute("show_voyage", ['id'=>$critic->getId()]);
-        // }
+            return $this->redirectToRoute("view_critic", ['id'=>$critic->getId()]);
+        }
 
         return $this->render('critics/view_critic.html.twig', [
             'critic' => $critic,
-            // 'commentaires' => $com->findAll(),
-            // 'formulaire' => $formulaire->createView()
+            'commentaires' => $commentaryRepository->findAll(),
+            'formulaire' => $formulaire->createView()
         ]);
     }
 
