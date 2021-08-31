@@ -2,19 +2,37 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use SpotifyWebAPI\SpotifyWebAPI;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StoreController extends AbstractController
 {
     /**
      * @Route("/store", name="store")
      */
-    public function index(): Response
+    public function index(SpotifyWebAPI $api): Response
     {
+        
+        $offset = 0;
+        
+                        
+        $search = $api->search('A','album',[
+            'offset' => $offset,
+            'limit' => 30
+            ]);
+
+        $albums = $search->albums->items;
+
+        $newReleases = $api->getNewReleases();
+        
+        
+        
         return $this->render('store/index.html.twig', [
-            'controller_name' => 'StoreController',
+            'albums' => $albums,
+            'newReleases' => $newReleases->albums->items
         ]);
     }
 }
