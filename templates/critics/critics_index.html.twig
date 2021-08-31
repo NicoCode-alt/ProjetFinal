@@ -32,35 +32,47 @@
     </div>
 
     <div class="container_card">
-        {% for critic in critics %}
             <div class="card mb-5">
-                <div class="row g-2">
-                    <div class="col-md-4 image_size">
+                <div class="row">
+        {% for critic in critics %}
+                    <div class="col-md-2 image_size">
                         <img src="https://source.unsplash.com/1024x200" class="img-fluid rounded-start" alt="photo d'album">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <div class="card-body">
                             <h4 class="card-title text-center">Critique</h4>
                             <div class="user">
-                                <p>Pseudo</p>
+                                <p>{{ critic.user.username }}</p>
                                 <p>{{ critic.createdAt | date("d/m/Y") }}</p>
                             </div>
                             <div class="comment mt-1">
                                 <h5 class="text-center">Commentaire critique</h5>
                                 <p>
-                                {{ critic.content }}
+                                {{ critic.content[:25 ] ~ '[...]'}}
                                 </p>
                             </div>
                             <div class="fonction">
-                                <p class="pt-2">Like/dislike</p>
+                                <a class="boutonLike btn" data-action="like" href="{{ path("like", {id: critic.id}) }}">
+                                    <span class="nombreLikes">{{ critic.likes|length }}</span>
+                                    <i class="far fa-thumbs-up"></i>
+                                </a> 
+                                <a class="boutonLike btn" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
+                                    <span class="nombreLikes">{{ critic.likes|length }}</span>
+                                    <i class="fas fa-thumbs-down"></i>
+                                </a> 
                                 <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">En voir plus ...</a>
                             </div>
                         </div>
                     </div>
+        {% endfor %}
                 </div>
             </div>
-        {% endfor %}
     </div>
 
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/javaScript/like.js') }}"></script>
 {% endblock %}
 
