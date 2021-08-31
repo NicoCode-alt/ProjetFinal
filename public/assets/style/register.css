@@ -41,20 +41,16 @@
 
 label {
     margin-top: 20px;
-    margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 1200px) {
-
     .responsive_button_register {
         margin: auto;
         width: 100%;
     }
-
 }
 
 @media screen and (max-width: 992px) {
-
     .background_register {
         height: 100%;
         width: 100%;
@@ -67,7 +63,6 @@ label {
 }
 
 @media screen and (max-width: 768px) {
-
     .responsive_button_register {
         margin: auto;
         width: 70%;

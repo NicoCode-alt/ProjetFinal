@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CommentaryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=CommentaryRepository::class)
@@ -32,6 +34,11 @@ class Commentary
      * @ORM\JoinColumn(nullable=false)
      */
     private $critic;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="commentary")
+     */
+    private $likes;
 
     public function getId(): ?int
     {
@@ -72,5 +79,48 @@ class Commentary
         $this->critic = $critic;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setCommentary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getCommentary() === $this) {
+                $like->setCommentary(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedBy(User $user): bool
+    {
+        foreach($this->likes as $like)
+        {
+            if ($like->getUser() == $user) 
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

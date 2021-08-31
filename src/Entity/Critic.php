@@ -2,16 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\CriticRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CriticRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=CriticRepository::class)
  */
 class Critic
 {
+
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -34,9 +37,21 @@ class Critic
      */
     private $commentaries;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="critic")
+     */
+    private $likes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="critics")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->commentaries = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +109,61 @@ class Critic
                 $commentary->setCritic(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setCritic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getCritic() === $this) {
+                $like->setCritic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedBy(User $user): bool
+    {
+        foreach($this->likes as $like)
+        {
+            if ($like->getUser() == $user) 
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

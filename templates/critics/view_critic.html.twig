@@ -8,10 +8,12 @@
     <img src="https://source.unsplash.com/1024x200" class="card-img-top" style="max-height:200px" alt="...">
     <div class="card-body">
       <h3 class="card-title">Nom de l'artiste</h3>
-      <h5 class="card-author">Auteur</h5>
+      <h5 class="card-author">{{ critic.user.username }}</h5>
       <p class="card-text">{{ critic.content }}</p>
       <p class="card-text">{{ critic.createdAt | date("d/m/Y") }}</p>
+
       <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
+
     </div>
   </div>
 
@@ -19,12 +21,31 @@
 
     {% if critic.commentaries|length == 0 %}
     <hr>
-    <p><strong>Il n'y a pas de commentaire</strong></p>
+    <p><strong>Il n'y a pas de commentaires</strong></p>
     {% else %}
     {% for commentaire in critic.commentaries %}
     <hr>
         <br>
         <p>{{ commentaire.content }}</p>
+
+
+
+        <div>
+            <a class="boutonLike btn" data-action="like" href="{{ path("like_commentary", {id: commentaire.id}) }}">
+                <span class="nombreLikes">{{ commentaire.likes|length }}</span>
+                <i class="far fa-thumbs-up"></i>
+            </a> 
+            <a class="boutonLike btn" data-action="dislike" href="{{ path("like_commentary", {id: commentaire.id}) }}">
+                <span class="nombreLikes">{{ commentaire.likes|length }}</span>
+                <i class="fas fa-thumbs-down"></i>
+            </a> 
+        </div>
+
+
+
+
+
+
         <hr>
         <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
       {% endfor %}
@@ -33,7 +54,7 @@
 
 <div class="border">
 
-  {# {% if app.user %} #}
+  {% if app.user %}
     {{form_start(formulaire)}}
 
       {{ form_row(formulaire.content) }}
@@ -42,10 +63,17 @@
 
     {{form_end(formulaire)}}
 
-  {# {% else %}
+  {% else %}
     <p>Veuillez vous connecter pour laisser un commentaire</p>
     <button href="{{ path('login') }}" class="btn btn-success">Connexion</button>
-  {% endif %} #}
+  {% endif %}
 </div>
 
+
 {% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/javaScript/like.js') }}"></script>
+{% endblock %}
+

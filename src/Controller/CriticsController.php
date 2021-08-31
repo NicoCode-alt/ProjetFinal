@@ -76,6 +76,7 @@ class CriticsController extends AbstractController
             if(!$modeEdition)
             {
                 $critic->setCreatedAt(new \DateTime());
+                $critic->setUser($this->getUser());
                 
             }
             
