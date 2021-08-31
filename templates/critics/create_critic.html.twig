@@ -2,21 +2,40 @@
 
 {% form_theme formulaire 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Zitics{% endblock %}
+{% block title %}Zikrit{% endblock %}
 
 {% block body %}
 
-    <h1>{% if modeEdition %}Modifiez votre critique{% else %}Envoyez votre critique{% endif %}</h1>
-
-    <div class="container col-md-6">
-    
-        {{ form_start(formulaire) }}
-
-            {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
-            
-            <button class="btn btn-primary" type="submit">
-            Enregistrer {% if modeEdition %}les modifications {% endif %}
-            </button>
-        {{ form_end(formulaire) }}
+    <div class="row">
+        <div class="col-2"></div>
+            <div class="col-8 text-center mt-4">
+                <h1>{% if modeEdition %} Modifiez votre critique 
+                        {% else %}
+                        Envoyez votre critique
+                    {% endif %}
+                </h1>
+            </div>
+        <div class="col-2"></div>
     </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+            <div class="col-6">
+    
+    {{ form_start(formulaire) }}
+
+        {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
+            
+        <div class="button">
+            <button class="btn btn-primary" type="submit">Enregistrer 
+                {% if modeEdition %} les modifications {% endif %}
+            </button>
+        </div>
+
+    {{ form_end(formulaire) }}
+
+            </div>
+        <div class="col-3"></div>
+    </div>
+
 {% endblock %}

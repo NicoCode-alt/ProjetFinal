@@ -9,11 +9,10 @@
         <div class="container_register">
 			<div class="background_register" style="background-image: url('{{ asset('assets/images/img_inscription.jpg') }}')">
 				<div class="overlay_register">
-					<div class="bloc_central_register">
+					<div class="bloc_central_register m-5">
 						<h1 class="title_register">Inscription :</h1>
 						
 							<div class="row responsive_button_register">
-
 								<div class="col-md-2"></div>
 									<div class="col-md-4">
 										{{form_row(formulaire.lastname)}}
@@ -22,12 +21,12 @@
 										{{form_row(formulaire.firstname)}}
 									</div>
 								<div class="col-md-2"></div>
-
+								
 								<div class="col-md-2"></div>
-									<div class="col-md-4">
+									<div class="col-md-4 mb-1">
 										{{form_row(formulaire.username)}}
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-4 mt-3">
 										{{form_row(formulaire.birthday)}}
 									</div>
 								<div class="col-md-2"></div>
