@@ -24,7 +24,7 @@ class SpotifyController extends AbstractController
     }
 
     /**
-     * @Route("/callback")
+     * @Route("/callback", name="callback")
      */
     public function callbackFromSpotify(Request $request): Response
     {
@@ -37,7 +37,9 @@ class SpotifyController extends AbstractController
         $this->api->setAccessToken($this->session->getAccessToken());
         $me = $this->api->me();
 
-        return new Response(var_export($me, false), 200, ['Content-Type' => 'text/plain']);
+        // return new Response(var_export($me, false), 200, ['Content-Type' => 'text/plain']);
+
+        return $this->redirectToRoute('store');
     }
 
     /**

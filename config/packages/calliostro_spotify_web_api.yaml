@@ -14,7 +14,7 @@ calliostro_spotify_web_api:
     return_assoc:         false
 
   # Address to redirect to after authentication success OR failure
-  redirect_uri:         'https://127.0.0.1:8000/callback/' # Example: 'https://127.0.0.1:8000/callback/'
+  redirect_uri:         'http://localhost:8000/callback' # Example: 'https://127.0.0.1:8000/callback/'
 
   # Service ID of the token provider that provides the user's access token
   token_provider:       calliostro_spotify_web_api.token_provider
