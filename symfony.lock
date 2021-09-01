@@ -1,4 +1,7 @@
 {
+    "calliostro/spotify-web-api-bundle": {
+        "version": "v1.0.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.3"
     },
@@ -87,6 +90,9 @@
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "jwilsson/spotify-web-api-php": {
+        "version": "5.0.0"
     },
     "laminas/laminas-code": {
         "version": "4.4.2"

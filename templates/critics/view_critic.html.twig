@@ -12,6 +12,28 @@
       <p class="card-text">{{ critic.content }}</p>
       <p class="card-text">{{ critic.createdAt | date("d/m/Y") }}</p>
 
+      {# Debut partie rating #}
+      <p>Note : {{ critic.rating }} / 10 
+        {% if critic.rating == 0 %}
+            {% for i in 1..10 %}
+                <i class="far fa-star"></i>
+            {% endfor %}
+            {% elseif critic.rating == 10 %}
+                {% for i in 1..10 %}
+                    <i class="fas fa-star"></i>
+                {% endfor %}
+            {% else %}
+                {# Boucle Etoiles pleines #}
+                {% for i in 1..critic.rating %}
+                    <i class="fas fa-star"></i>
+                {% endfor %}
+                {# Boucle Etoiles vides #}
+                {% for i in 1..10-critic.rating %}
+                    <i class="far fa-star"></i>
+                {% endfor %}
+        {% endif %}
+      {# Fin partie rating #}
+
       <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
 
     </div>
@@ -26,10 +48,8 @@
     {% for commentaire in critic.commentaries %}
     <hr>
         <br>
-        <p>{{ commentaire.content }}</p>
-
-
-
+        <p>Auteur du commentaire : {{ commentaire.user.username }}</p>
+        <p>Votre commentaire : {{ commentaire.content }}</p>
         <div>
             <a class="boutonLike btn" data-action="like" href="{{ path("like_commentary", {id: commentaire.id}) }}">
                 <span class="nombreLikes">{{ commentaire.likes|length }}</span>
@@ -40,10 +60,6 @@
                 <i class="fas fa-thumbs-down"></i>
             </a> 
         </div>
-
-
-
-
 
 
         <hr>

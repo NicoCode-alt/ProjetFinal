@@ -25,6 +25,7 @@
     {{ form_start(formulaire) }}
 
         {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
+        {{ form_row(formulaire.rating) }}
             
         <div class="button">
             <button class="btn btn-primary" type="submit">Enregistrer 

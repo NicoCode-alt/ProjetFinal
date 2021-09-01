@@ -51,6 +51,29 @@
                                         <p>
                                         {{ critic.content[:25 ] ~ '[...]'}}
                                         </p>
+
+                                {# Debut partie rating #}
+                                <p>Sa note : {{ critic.rating }} / 10 
+                                    {% if critic.rating == 0 %}
+                                        {% for i in 1..10 %}
+                                            <i class="far fa-star"></i>
+                                        {% endfor %}
+                                        {% elseif critic.rating == 10 %}
+                                            {% for i in 1..10 %}
+                                                <i class="fas fa-star"></i>
+                                            {% endfor %}
+                                        {% else %}
+                                            {# Boucle Etoiles pleines #}
+                                            {% for i in 1..critic.rating %}
+                                                <i class="fas fa-star"></i>
+                                            {% endfor %}
+                                            {# Boucle Etoiles vides #}
+                                            {% for i in 1..10-critic.rating %}
+                                                <i class="far fa-star"></i>
+                                            {% endfor %}
+                                    {% endif %}
+                                {# Fin partie rating #}
+
                                     </div>
                                     <div class="fonction">
                                         <div class="like_dislike">

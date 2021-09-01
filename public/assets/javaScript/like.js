@@ -20,8 +20,8 @@ function cliquePourLiker(e) {
 
             if (response.liked) {
                 if (response.like === "like") {
-                    this.classList.add("btn-success");
                     this.classList.remove("btn-danger");
+                    this.classList.add("btn-success");
                 } else {
                     this.classList.remove("btn-success");
                     this.classList.add("btn-danger");

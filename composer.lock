@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c60b15c42c19bc505059a5c281f0869",
+    "content-hash": "5a479f4f6328fe62225223cdb15bc264",
     "packages": [
+        {
+            "name": "calliostro/spotify-web-api-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/calliostro/spotify-web-api-bundle.git",
+                "reference": "e6cad2098a168b95faad2fe4116287aaae606782"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/calliostro/spotify-web-api-bundle/zipball/e6cad2098a168b95faad2fe4116287aaae606782",
+                "reference": "e6cad2098a168b95faad2fe4116287aaae606782",
+                "shasum": ""
+            },
+            "require": {
+                "jwilsson/spotify-web-api-php": "^5.0",
+                "php": "^7.3 || ^8.0",
+                "symfony/config": "^5.0",
+                "symfony/dependency-injection": "^5.0",
+                "symfony/http-kernel": "^5.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Calliostro\\SpotifyWebApiBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "calliostro",
+                    "email": "calliostro@gmail.com"
+                }
+            ],
+            "description": "Spotify Web API client for PHP 7.3 or 8.0 and Symfony 5",
+            "support": {
+                "issues": "https://github.com/calliostro/spotify-web-api-bundle/issues",
+                "source": "https://github.com/calliostro/spotify-web-api-bundle/tree/v1.0.0"
+            },
+            "time": "2021-07-01T13:40:54+00:00"
+        },
         {
             "name": "composer/package-versions-deprecated",
             "version": "1.11.99.3",
@@ -1587,6 +1634,56 @@
                 }
             ],
             "time": "2021-05-22T16:11:15+00:00"
+        },
+        {
+            "name": "jwilsson/spotify-web-api-php",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jwilsson/spotify-web-api-php.git",
+                "reference": "44f270a9e8ef9f35089267c58d6bae155fd79ec6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jwilsson/spotify-web-api-php/zipball/44f270a9e8ef9f35089267c58d6bae155fd79ec6",
+                "reference": "44f270a9e8ef9f35089267c58d6bae155fd79ec6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^9.4",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SpotifyWebAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wilsson",
+                    "email": "jonathan.wilsson@gmail.com"
+                }
+            ],
+            "description": "A PHP wrapper for Spotify's Web API.",
+            "homepage": "https://github.com/jwilsson/spotify-web-api-php",
+            "keywords": [
+                "spotify"
+            ],
+            "support": {
+                "issues": "https://github.com/jwilsson/spotify-web-api-php/issues",
+                "source": "https://github.com/jwilsson/spotify-web-api-php/tree/5.0.0"
+            },
+            "time": "2021-05-14T20:15:37+00:00"
         },
         {
             "name": "laminas/laminas-code",

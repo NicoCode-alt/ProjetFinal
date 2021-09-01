@@ -39,7 +39,7 @@ class CriticsController extends AbstractController
         if($formulaire->isSubmitted() && $formulaire->isValid()){
             $comment->setCreatedAt(new \DateTime());
             $comment->setCritic($critic);
-            // $comment->setAuthor($this->getUser());  
+            $comment->setUser($this->getUser());  
 
             $manager->persist($comment);
             $manager->flush();
