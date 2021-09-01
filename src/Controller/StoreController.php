@@ -24,9 +24,6 @@ class StoreController extends AbstractController
             'limit' => 30
             ]);
            $test= $api->getAlbum('41GuZcammIkupMPKH2OJ6I');
-           
-        dd($test);
-
 
         $albums = $search->albums->items;
 

@@ -31,41 +31,45 @@
         </div>
     </div>
 
-    <div class="container_card">
-            <div class="card mb-5">
-                <div class="row">
-        {% for critic in critics %}
-                    <div class="col-md-2 image_size">
-                        <img src="https://source.unsplash.com/1024x200" class="img-fluid rounded-start" alt="photo d'album">
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Critique</h4>
-                            <div class="user">
-                                <p>{{ critic.user.username }}</p>
-                                <p>{{ critic.createdAt | date("d/m/Y") }}</p>
-                            </div>
-                            <div class="comment mt-1">
-                                <h5 class="text-center">Commentaire critique</h5>
-                                <p>
-                                {{ critic.content[:25 ] ~ '[...]'}}
-                                </p>
-                            </div>
-                            <div class="fonction">
-                                <a class="boutonLike btn" data-action="like" href="{{ path("like", {id: critic.id}) }}">
-                                    <span class="nombreLikes">{{ critic.likes|length }}</span>
-                                    <i class="far fa-thumbs-up"></i>
-                                </a> 
-                                <a class="boutonLike btn" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
-                                    <span class="nombreLikes">{{ critic.likes|length }}</span>
-                                    <i class="fas fa-thumbs-down"></i>
-                                </a> 
-                                <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">En voir plus ...</a>
-                            </div>
+    <div class="container flex-nowrap">
+            <div class="row responsive_card">
+                {% for critic in critics %}
+       
+                    <div class="col-6 responsive_width">
+                        <div class="card m-4 shadow rounded gradient">
+                        
+                            <img src="https://source.unsplash.com/1024x200" class="image_card img-fluid rounded-start" alt="photo d'album">
+                        
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">Critique de :</h4>
+                                    <div class="user">
+                                        <p>{{ critic.user.username }}</p>
+                                        <p>Le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
+                                    </div>
+                                    <div class="comment mt-1">
+                                        <h5 class="text-center">Commentaire critique</h5>
+                                        <p>
+                                        {{ critic.content[:25 ] ~ '[...]'}}
+                                        </p>
+                                    </div>
+                                    <div class="fonction">
+                                        <div class="like_dislike">
+                                        <a class="boutonLike btn" data-action="like" href="{{ path("like", {id: critic.id}) }}">
+                                            <span class="nombreLikes">{{ critic.likes|length }}</span>
+                                            <i class="far fa-thumbs-up"></i>
+                                        </a> 
+                                        <a class="boutonLike btn" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
+                                            <span class="nombreLikes">{{ critic.likes|length }}</span>
+                                            <i class="fas fa-thumbs-down"></i>
+                                        </a> 
+                                        </div>
+                                        <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">En voir plus ...</a>
+                                    </div>                                
+                                </div>
                         </div>
                     </div>
-        {% endfor %}
-                </div>
+                    
+                {% endfor %}   
             </div>
     </div>
 

@@ -37,7 +37,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon-32x32.png') }}" alt="Logo d'une guitare">
 
     </head>
-    <body>
+    <body class="gradient_base">
 
         <header class="header">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light shadow rounded">
@@ -95,13 +95,19 @@
 				</div>
 			</nav>
 		</header>
-
-            {% block body %}
-                
-            {% endblock %}
+        
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
 
         <footer>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <hr>
+            </div>
+        </div>
             <div class="row responsive_footer">
+                
                 <div class="col-4 text-center copyright">
                     <div>
                         <p><img src="{{ asset('assets/images/copyright.png') }}" width="40px" height="40px" alt="Logo copyright">opyright 2021</p>
