@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zictics{% endblock %}
+
+{% block body %}
+    <h1>Musicotheque</h1>
+    <hr>
+    <div class="container d-flex justify-content-around">
+        <a href="{{ path('store') }}">Dernières sorties</a>
+        <a href="{{ path('search', {id:0}) }}">Les albums</a>
+        <a href="{{ path('categories')}}">Les catégories</a>
+        <form method="post">
+            <input type="text" placeholder="Rechercher un album">
+        </form>
+    </div>
+    <br>
+    <h3>Les catégories</h3>
+
+    <div class="container d-flex flex-wrap">
+        {% for category in categories %}
+                <div class="card-body">
+                    <h5 class="card-title">
+                <br>
+                    <a href="#">{{ category.name }}</a>
+                    </h5>
+                </div>
+        {% endfor %}
+    </div>
+    
+    
+
+
+{% endblock %}

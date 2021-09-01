@@ -14,32 +14,29 @@
         </form>
     </div>
     <br>
-    <h3>Dernieres sorties</h3>
-    <div class="row">
-        {% for new in newReleases %}
+    <h3>Les catégories</h3>
+
+    <div class="container d-flex flex-wrap">
+
+                {% for zik in category %}
             <div class="card shadow" style="width: 15rem;">
-                <img src="{{ new.images[1].url }}" class="card-img-top pt-2" alt="Cover">
+                <img src="{{ zik.images[1].url }}" class="card-img-top pt-2" alt="Cover">
                     <div class="card-body">
                         <h5 class="card-title">
                         {% for artist in new.artists %}
                             <strong>{{ artist.name }}</strong>
                         {% endfor %}<br>
-                        {{ new.name }}
+                        {{ zik.name }}
                         </h5>
-                        <p class="card-text">Sortie le {{ new.release_date }}</p>
+                        <p class="card-text">Sortie le {{ zik.release_date }}</p>
                         <a href="#" class="btn btn-success">Voir</a>
                     </div>
             </div>
-    {% endfor %}
-    </div>
+        {% endfor %}
 
-    {# <div class="card-body d-flex justify-content-start align-items-center px-5">
-        <a href="{{ path('search', {id:id}) }}" class="btn btn-warning btn-lg">
-            Voir plus
-        </a>
-        {% if id < 0 %}
-            <p>Page: {{id}}</p>
-        {% endif %}
-    </div> #}
+    </div>
+    
+    
+
 
 {% endblock %}

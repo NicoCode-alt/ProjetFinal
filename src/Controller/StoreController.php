@@ -21,7 +21,6 @@ class StoreController extends AbstractController
             'offset' => $offset,
             'limit' => 20
             ]);
-           $test= $api->getAlbum('41GuZcammIkupMPKH2OJ6I');
 
         $albums = $search->albums->items;
 
