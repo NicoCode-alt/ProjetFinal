@@ -29,6 +29,8 @@
             <link rel="stylesheet" href="{{ asset('assets/style/login.css') }}"> <!-- POUR LA TEMPLATE LOGIN.html.twig DANS DOSSIER AUTH, FORMULAIRE CONNEXION -->
             <link rel="stylesheet" href="{{ asset('assets/style/register.css') }}"> <!-- POUR LA TEMPLATE index.html.twig DANS DOSSIER AUTH, FORMULAIRE INSCRIPTION -->
             <link rel="stylesheet" href="{{ asset('assets/style/create_critic.css') }}"> <!-- POUR LA TEMPLATE create_critic.html.twig DANS DOSSIER CRITICS, CREATION D'UNE CRITIQUE -->
+            <link rel="stylesheet" href="{{ asset('assets/style/musicotheque.css') }}"> <!-- POUR LA TEMPLATE index.html.twig DANS DOSSIER STORE, MAGASIN MUSICOTHEQUE -->
+            
         {% endblock %}
 
         {% block javascripts %}{% endblock %}
@@ -165,7 +167,7 @@
         crossorigin="anonymous"></script>
 
         <script>AOS.init();</script>
-        <script src="{{ asset('assets/javaScript/base.js') }}"></script>
-
+        <script src="{{ asset('assets/javaScript/base.js') }}"></script> <!-- POUR LA TEMPLATE base.html.twig DANS DOSSIER STORE, NAV BAR FOOTER -->
+        <script src="{{ asset('assets/javaScript/musicotheque.js') }}"></script> <!-- POUR LA TEMPLATE index.html.twig DANS DOSSIER STORE, MAGASIN MUSICOTHEQUE -->
     </body>
 </html>

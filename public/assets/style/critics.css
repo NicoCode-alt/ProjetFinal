@@ -13,7 +13,8 @@
     margin-bottom: 2rem;
 }
 
-.background {
+.background_critics {
+    background: url('../images/img_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -21,7 +22,7 @@
     width: 80%;
 }
 
-.overlay {
+.overlay_critics {
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.45);

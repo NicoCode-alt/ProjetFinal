@@ -1,10 +1,10 @@
 calliostro_spotify_web_api:
 
   # Your Client ID
-  client_id:            ' ' # Required
+  client_id:            'f93ea132a246415881bb127146d83714' # Required
 
   # Your Client Secret
-  client_secret:        ' ' # Required
+  client_secret:        '445a4e8acb244db784688109d84a7566' # Required
 
   # Options for SpotifyWebAPI client
   # https://github.com/jwilsson/spotify-web-api-php/blob/main/docs/examples/setting-options.md
