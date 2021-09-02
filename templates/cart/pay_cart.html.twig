@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acheter{% endblock %}
+
+{% block body %}
+    <h1>Confirmez votre commande</h1>
+    
+   <h3>Commande 1234567</h3> 
+    <ul>
+        {# {% for item in items %}
+            <li>
+                <img src="{{ item.product.images[2].url }}" alt="Cover"><br>
+                <strong><p>{{ item.product.name }} </p></strong>
+                {% for artist in item.artists %}
+                    <p>{{ artist.name }} </p>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for item in items %}
+            <li>
+                Quantité = {{ item.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item quantity * item.price }}
+            </li>
+        {{ endfor }} #}
+    </ul>
+    
+
+{% endblock %}
