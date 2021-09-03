@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background_view {
+    background: url('../images/listen.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    margin-bottom: 5rem;
+}
+
+.image_view img{
+    display: block;
+    margin: auto;
+    width: 350px;
+    height: 350px;
+}
+
+.p_artist_album_name {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

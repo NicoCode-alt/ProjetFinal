@@ -3,10 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* CODE CSS DE LA NAV BAR ET FOOTER */
-/* 
-Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed 
-*/
 
 .gradient_base {
     background-image: linear-gradient(
@@ -48,6 +44,12 @@ Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed
         linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
 }
 
+/* CODE CSS DE LA NAV BAR ET FOOTER */
+
+/* 
+Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed 
+*/
+
 .header {
     position: relative;
     z-index: 10;
@@ -78,6 +80,19 @@ Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed
         width: 12ch;
     }
 }
+
+/* CODE CSS DE LE BOUTTON EN SCROLL TOP */
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 17px;
+    z-index: 99;
+    cursor: pointer;
+}
+
+/* CODE CSS DE LE FOOTER */
 
 footer {
     margin: 2rem;

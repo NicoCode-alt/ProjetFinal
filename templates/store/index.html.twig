@@ -46,7 +46,7 @@
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-            <h4 id="offcanvasRightLabel"><img class="logo_guitare me-2" src="{{ asset('assets/images/guitar_64px.png') }}" width="40px" height="40px"> Zikrit</h4>
+            <h4 id="offcanvasRightLabel"><img class="logo_guitare me-2" src="{{ asset('assets/images/guitar_64px.png') }}" width="40px" height="40px" alt="logo d'une guitar"> Zikrit</h4>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">   
@@ -140,11 +140,13 @@
                             </h5>
                             <p class="card-text">Sortie le {{ new.release_date }}</p>
                             <div class="container_link">
-                            <div class="overlay_link">
-                                <div class="text_link">
-                                    <a href="#" class="btn btn-primary btn-sm">Voir</a>
+                                <div class="overlay_link">
+                                    <div class="text_link">
+                                        <div class="logo_card_link">
+                                            <a href="#"><img class="logo_loupe" src="{{ asset('assets/images/loupe.png') }}" width="64px" height="64px" alt="logo d'une loupe"></a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                 </div>

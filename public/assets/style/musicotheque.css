@@ -80,6 +80,16 @@ CODE CSS POUR LES CARDS AVEC OVERLAY EN LIEN
     text-align: center;
 }
 
+.logo_card_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_card_link a {
+    margin: 1.5rem;
+}
+
 /* 
 CODE CSS POUR NAV BAR LATERALE OFFCANVAS
 */
@@ -193,7 +203,7 @@ CODE CSS POUR TEMPLATE BAR categories.html.twig
 
 @media screen and (max-width: 992px) {
     
-    .responsive_store ul{
+    .responsive_store ul {
         display: flex;
         flex-direction: column;
         margin-top: -2rem;
@@ -201,7 +211,7 @@ CODE CSS POUR TEMPLATE BAR categories.html.twig
 
     li {
         margin-top : 0.5rem;
-     }
+    }
 
     .btn_nav_scroll {
         margin: 2.5rem;

@@ -1,20 +1,129 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Zictics{% endblock %}
+{% block title %}Zikrit{% endblock %}
 
 {% block body %}
-    <h1>Musicotheque</h1>
-    <hr>
-    <div class="container d-flex justify-content-around">
-        <a href="{{ path('store') }}">Dernières sorties</a>
-        <a href="{{ path('search', {id:0}) }}">Les albums</a>
-        <a href="{{ path('categories')}}">Les catégories</a>
-        <form method="post">
-            <input type="text" placeholder="Rechercher un album">
-        </form>
+    <section class="container_store">
+        <div class="background_store">
+            <div class="overlay_store">
+                <div class="row">
+                    <div class="col-12 title_store text-center mt-4">
+                        <h1>Musicotheque</h1>
+                    </div>
+                </div>
+                
+                <div class="row responsive_store">
+                    <div class="col-6 lien_store">
+                        <ul>
+                            <li>
+                                <a href="{{ path('store') }}">Dernières sorties</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('search', {id:0}) }}">Les albums</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('categories')}}">Les catégories</a>
+                            </li>   
+                        </ul>
+                    </div>
+                    <div class="col-6 text-center">
+                        <form method="post">
+                            <button class="btn btn-primary btn-sm btn_nav_scroll" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight">Rechercher rapide</button>
+
+                            <input class="form-control-sm none" type="text" name="paramFilter" placeholder="Rechercher un album" aria-label="Search">
+                            <button class="btn btn-primary btn-sm none" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div> 
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- NAV BAR LATERAL DROITE -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h4 id="offcanvasRightLabel"><img class="logo_guitare me-2" src="{{ asset('assets/images/guitar_64px.png') }}" width="40px" height="40px"> Zikrit</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">   
+            <nav class="sidebar">
+                <ul class="nav flex-column" id="nav_accordion">
+                    <div class="lien_nav_scroll">
+                        <ul>
+                            <li>
+                                <a href="{{ path('store') }}">Dernières sorties</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('search', {id:0}) }}">Les albums</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('categories')}}">Les catégories</a>
+                            </li>   
+                        </ul>
+                    </div>
+                    <h6>Recherche simplifier :</h6>
+                    <li class="nav-item">
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect02">
+                                <option selected>Categories</option>
+                                <option value="1">Pop</option>
+                                <option value="2">Rock</option>
+                                <option value="3">RnB</option>
+                                <option value="3">Classique</option>
+                                <option value="3">Jazz</option>
+                            </select> 
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect02">
+                                <option selected>Album</option>
+                                <option value="1">Title Album</option>
+                                <option value="2">Title Album</option>
+                                <option value="3">Title Album</option>
+                                <option value="3">Title Album</option>
+                                <option value="3">Title Album</option>
+                            </select> 
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect02">
+                                <option selected>Titre</option>
+                                <option value="1">Title Titre</option>
+                                <option value="2">Title Titre</option>
+                                <option value="3">Title Titre</option>
+                                <option value="3">Title Titre</option>
+                                <option value="3">Title Titre</option>
+                            </select> 
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <p class="p_price">Prix :</p>
+                        <div class="box">
+                            <div class="slider">
+                                <input type="range" min="0" max="50" value="10" id="range">
+                            </div>
+                            <span id="demo">€</span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary btn-sm" type="button">Search</button> 
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <br>
-    <h2>Les albums</h2>
+    
+    <h3 class="title_h3">Les albums :</h2>
     
     <div class="card-body d-flex justify-content-start align-items-center px-5">
         <a href="{{ path('search', {id:id}) }}" class="btn btn-warning btn-lg">
@@ -24,32 +133,47 @@
             <p>Page: {{id}}</p>
         {% endif %}
     </div>
-    <div class="row">       
-        {% for album in albums %}
-            <div class="card shadow" style="width: 15rem;">
-                <img src="{{ album.images[1].url }}" class="card-img-top pt-2" alt="Cover">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        {% for artist in album.artists %}
-                            <strong>{{ artist.name }}</strong>
-                        {% endfor %}<br>
-                        {{ album.name }}
-                        </h5>
-                        <p class="card-text">Sortie le {{ album.release_date }}</p>
-                        <a href="{{ path('view_album', {id:album.id})}}" class="btn btn-success">Voir</a>
-                        {# <a href="{{ path('cart_add', {id:album.id}) }}" class="btn btn-warning">Ajouter au panier</a> #}
-                    </div>
-            </div>
-        {% endfor %}
-            <div class="card-body d-flex justify-content-start align-items-center px-5">
-                <a href="{{ path('search', {id:id}) }}" class="btn btn-warning btn-lg">
-                    Voir plus
-                </a>
-                {% if id < 0 %}
-                <p>Page: {{id}}</p>
-                {% endif %}
-            </div>
+
+
+
+    <div class="container flex-nowrap">
+        <div class="row responsive_card_store">      
+            {% for album in albums %}
+
+                <div class="card m-2 shadow" style="width: 15rem;">
+                    <img src="{{ album.images[1].url }}" class="card-img-top pt-2" alt="Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                            {% for artist in album.artists %}
+                                <strong>{{ artist.name }}</strong>
+                            {% endfor %}<br>
+                            {{ album.name }}
+                            </h5>
+                            <p class="card-text">Sortie le {{ album.release_date }}</p>
+                            <div class="container_link">
+                                <div class="overlay_link">
+                                    <div class="text_link">
+                                        <div class="logo_card_link">
+                                            <a href="{{ path('view_album', {id:album.id})}}"><img class="logo_loupe" src="{{ asset('assets/images/loupe.png') }}" width="64px" height="64px" alt="logo d'une loupe"></a>
+                                            <a href="{{ path('cart_add', {id:album.id}) }}"><img class="logo_caddie" src="{{ asset('assets/images/panier.png') }}" width="64px" height="64px" alt="logo d'un caddie"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
+    <div class="card-body d-flex justify-content-start align-items-center px-5">
+                    <a href="{{ path('search', {id:id}) }}" class="btn btn-warning btn-lg">
+                        Voir plus
+                    </a>
+                    {% if id < 0 %}
+                    <p>Page: {{id}}</p>
+                    {% endif %}
+                </div>
     
     
     
