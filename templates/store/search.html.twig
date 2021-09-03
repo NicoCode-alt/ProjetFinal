@@ -37,7 +37,7 @@
                         </h5>
                         <p class="card-text">Sortie le {{ album.release_date }}</p>
                         <a href="{{ path('view_album', {id:album.id})}}" class="btn btn-success">Voir</a>
-                        <a href="{{ path('cart_add', {id:album.id}) }}" class="btn btn-warning">Ajouter au panier</a>
+                        {# <a href="{{ path('cart_add', {id:album.id}) }}" class="btn btn-warning">Ajouter au panier</a> #}
                     </div>
             </div>
         {% endfor %}

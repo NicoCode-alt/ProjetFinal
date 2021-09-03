@@ -67,10 +67,10 @@
                             {% endif %}
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ path('critics_index')}}">Les critiques</a>
+                                <a class="nav-link active" aria-current="page" href="{{ path('critics_index')}}#critics_title">Les critiques</a>
                             </li>
                             <li class="nav-item">
-								<a class="nav-link active"  href="#">Musicothèque</a>
+								<a class="nav-link active"  href="{{ path('store') }}">Musicothèque</a>
 							</li>
                             
                             {% if app.user %}

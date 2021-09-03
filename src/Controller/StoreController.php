@@ -77,6 +77,7 @@ class StoreController extends AbstractController
             'categories' => $categories
         ]);
     }
+
     /**
      * @Route("/categories/{id}", name="view_category")
      */
@@ -87,11 +88,35 @@ class StoreController extends AbstractController
             'offset' => $offset,
             'limit' => 20
             ]);
-        dd($searchCategory);
         $category = $searchCategory->categories->items;
        
         return $this->render('store/category.html.twig', [
             'category' => $category
         ]);
     }
+
+
+    // /**
+    //  * @Route("/store/", name="store")
+    //  */
+    // public function filter(SpotifyWebAPI $api, Request $request): Response
+    // {
+    //     $offset = 0;
+    //     $searchParam = $request->get('paramFilter');
+
+    //     $albumsFilter = $api->albums->items;
+
+    //     $searchParam = $api->search('A','album',[
+    //         'offset' => $offset,
+    //         'limit' => 20
+    //     ]);
+
+    //     $albums = $searchParam->albums->items;
+
+        
+    //     return $this->render('store/index.html.twig', [
+    //         'albums' => $albums,
+    //     ]);
+    
+    // }
 }

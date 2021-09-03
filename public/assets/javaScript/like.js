@@ -22,7 +22,7 @@ function cliquePourLiker(e) {
                 if (response.like === "like") {
                     this.classList.remove("btn-danger");
                     this.classList.add("btn-success");
-                } else {
+                } else if (response.like === "dislike") {
                     this.classList.remove("btn-success");
                     this.classList.add("btn-danger");
                 }

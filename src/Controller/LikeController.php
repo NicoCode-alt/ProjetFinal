@@ -22,6 +22,7 @@ class LikeController extends AbstractController
     public function likeCritic(Critic $critic, UserInterface $user, EntityManagerInterface $manager, LikeRepository $likeRepo, Request $request): Response
     {
         $likeContent = $request->request->get('like');
+        $dislikeContent = $request->request->get('dislike');
 
         if( $critic->isLikedBy($user))
         {
@@ -36,7 +37,14 @@ class LikeController extends AbstractController
             $like= new Like();
             $like->setUser($user);
             $like->setCritic($critic);
-            $like->setValue($likeContent === 'like');
+
+            // if ($likeContent === 'like') {
+            //     $like->setValue($likeContent === 'like');
+            //  } else {
+            //     $like->setValue($dislikeContent === 'dislike');
+            //  }
+
+             $like->setValue($likeContent === 'like');
             $manager->persist($like);
             $manager->flush();
             
@@ -48,7 +56,7 @@ class LikeController extends AbstractController
                 'critic'=>$critic
             ]),
             'liked'=> $liked,
-            'like' => $likeContent
+            'like' => $likeContent,
         ];
 
         return $this->json($donnees, 200);

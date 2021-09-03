@@ -18,3 +18,10 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+###>Spotify ###
+
+/calliostro_spotify_web_api.yaml
+
+###< Spotify ###
+/config/packages/calliostro_spotify_web_api.yaml

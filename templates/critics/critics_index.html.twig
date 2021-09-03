@@ -27,7 +27,7 @@
     <div class="row justify-content-center">
         <div class="col-8">
             <hr>
-            <h3 class="text-center">Les critiques de musique</h3>
+            <h3 id="critics_title" class="text-center">Les critiques de musique</h3>
         </div>
     </div>
 
@@ -77,15 +77,15 @@
                                     </div>
                                     <div class="fonction">
                                         <div class="like_dislike">
-                                        <a class="boutonLike btn" data-action="like" href="{{ path("like", {id: critic.id}) }}">
-                                            <span class="nombreLikes">{{ critic.likes|length }}</span>
-                                            <i class="far fa-thumbs-up"></i>
-                                        </a> 
-                                        <a class="boutonLike btn" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
-                                            <span class="nombreLikes">{{ critic.likes|length }}</span>
-                                            <i class="fas fa-thumbs-down"></i>
-                                        </a> 
-                                        </div>
+                                <a class="boutonLike btn" data-action="like" href="{{ path("like", {id: critic.id}) }}">
+                                    <span class="nombreLikes">{{ critic.likeList|length }}</span>
+                                    <i class="far fa-thumbs-up"></i>
+                                </a> 
+                                <a class="boutonLike btn" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
+                                    <span class="nombreLikes">{{ critic.dislikeList|length }}</span>
+                                    <i class="fas fa-thumbs-down"></i>
+                                </a> 
+                                </div>
                                         <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">En voir plus ...</a>
                                     </div>                                
                                 </div>

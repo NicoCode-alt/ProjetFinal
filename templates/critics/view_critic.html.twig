@@ -63,7 +63,9 @@
 
 
         <hr>
+        {% if app.user %}
         <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
+        {% endif %}
       {% endfor %}
     {% endif %}
 </div>
@@ -81,7 +83,7 @@
 
   {% else %}
     <p>Veuillez vous connecter pour laisser un commentaire</p>
-    <button href="{{ path('login') }}" class="btn btn-success">Connexion</button>
+    <a href="{{ path('login') }}" class="btn btn-success">Connexion</a>
   {% endif %}
 </div>
 
