@@ -116,18 +116,32 @@ class Commentary
 
         return $this;
     }
+    
+    public function getGoodLikes(): Collection
+    {
+        return $this->likes->filter(function ($like) {
+            return $like->getValue() == 1;
+        });
+    }
 
-    public function isLikedBy(User $user): bool
+    public function getBadLikes(): Collection
+    {
+        return $this->likes->filter(function ($like) {
+            return $like->getValue() == 0;
+        });
+    }
+
+    public function getLikeBy(User $user): ?Like
     {
         foreach($this->likes as $like)
         {
             if ($like->getUser() == $user) 
             {
-                return true;
+                return $like;
             }
         }
 
-        return false;
+        return null;
     }
 
     public function getUser(): ?User

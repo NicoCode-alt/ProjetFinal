@@ -8,7 +8,7 @@
             <div class="overlay_store">
                 <div class="row">
                     <div class="col-12 title_store text-center mt-4">
-                        <h1>Musicotheque</h1>
+                        <h1>Musicothèque</h1>
                     </div>
                 </div>
                 
@@ -27,13 +27,13 @@
                         </ul>
                     </div>
                     <div class="col-6 text-center">
-                        <form method="post">
+                        <form action="{{ path('search', {id: 0}) }}">
                             <button class="btn btn-primary btn-sm btn_nav_scroll" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight">Rechercher rapide</button>
-
-                            <input class="form-control-sm none" type="text" name="paramFilter" placeholder="Rechercher un album" aria-label="Search">
-                            <button class="btn btn-primary btn-sm none" type="submit">Search</button>
+                            aria-controls="offcanvasRight">Recherche rapide</button>
+                            <label for="search" class="sr-only"></label>
+                            <input class="form-control-sm none" type="text" name="search" placeholder="Rechercher" aria-label="Search">
+                            <button class="btn btn-primary btn-sm none" type="submit">Rechercher</button>
                         </form>
                     </div>
                 </div> 
@@ -65,11 +65,11 @@
                             </li>   
                         </ul>
                     </div>
-                    <h6>Recherche simplifier :</h6>
+                    <h6>Recherche simplifiée :</h6>
                     <li class="nav-item">
                         <div class="input-group">
                             <select class="form-select" id="inputGroupSelect02">
-                                <option selected>Categories</option>
+                                <option selected>Catégories</option>
                                 <option value="1">Pop</option>
                                 <option value="2">Rock</option>
                                 <option value="3">RnB</option>

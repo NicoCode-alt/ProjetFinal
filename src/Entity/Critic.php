@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Like;
 use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CriticRepository;
@@ -126,6 +127,20 @@ class Critic
         return $this->likes;
     }
 
+    public function getGoodLikes(): Collection
+    {
+        return $this->likes->filter(function ($like) {
+            return $like->getValue() == 1;
+        });
+    }
+
+    public function getBadLikes(): Collection
+    {
+        return $this->likes->filter(function ($like) {
+            return $like->getValue() == 0;
+        });
+    }
+
     public function addLike(Like $like): self
     {
         if (!$this->likes->contains($like)) {
@@ -148,17 +163,17 @@ class Critic
         return $this;
     }
 
-    public function isLikedBy(User $user): bool
+    public function getLikeBy(User $user): ?Like
     {
         foreach($this->likes as $like)
         {
             if ($like->getUser() == $user) 
             {
-                return true;
+                return $like;
             }
         }
 
-        return false;
+        return null;
     }
 
     public function getUser(): ?User

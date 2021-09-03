@@ -12,24 +12,18 @@ function cliquePourLiker(e) {
 
     requeteAjax.onload = () => {
         if (requeteAjax.status === 200 && requeteAjax.readyState === 4) {
-            let response = JSON.parse(requeteAjax.responseText);
+            let response = requeteAjax.responseText;
 
-            let nombreDeLikes = response.nombreLikes;
+            // Récupération de la div
+            const parent = this.parentNode;
 
-            this.querySelector(".nombreLikes").innerHTML = nombreDeLikes;
+            // Intègre le html dans la div
+            parent.innerHTML = response;
 
-            if (response.liked) {
-                if (response.like === "like") {
-                    this.classList.remove("btn-danger");
-                    this.classList.add("btn-success");
-                } else if (response.like === "dislike") {
-                    this.classList.remove("btn-success");
-                    this.classList.add("btn-danger");
-                }
-            } else {
-                this.classList.remove("btn-success");
-                this.classList.remove("btn-danger");
-            }
+            // Réinstalle les événements sur les liens
+            parent.childNodes.forEach((a) => {
+                a.addEventListener("click", cliquePourLiker);
+            });
         }
     };
 }

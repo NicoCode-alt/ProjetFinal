@@ -1,0 +1,8 @@
+<a class="boutonLike btn {% if like is not null and like.value == 1 %} btn-success {% endif %}" data-action="like" href="{{ path("like", {id: critic.id}) }}">
+    <span class="nombreLikes">{{ commentaire.goodLikes|length }}</span>
+    <i class="far fa-thumbs-up"></i>
+</a> 
+<a class="boutonLike btn {% if like is not null and like.value == 0 %} btn-danger {% endif %}" data-action="dislike" href="{{ path("like", {id: critic.id}) }}">
+    <span class="nombreLikes">{{ commentaire.badLikes|length }}</span>
+    <i class="fas fa-thumbs-down"></i>
+</a>

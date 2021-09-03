@@ -49,13 +49,15 @@ class StoreController extends AbstractController
     /**
      * @Route("/store/search/{id}", name="search")
      */
-    public function searchInc(SpotifyWebAPI $api, $id): Response
+    public function searchInc(SpotifyWebAPI $api, Request $request, $id): Response
     {
+        $search = $request->get('search') ?? 'A';
+
         $offset = $id*20;
-        $search = $api->search('A','album',[
+        $search = $api->search("album:$search",'album',[
             'offset' => $offset,
             'limit' => 20
-            ]);
+        ]);
 
         $albums = $search->albums->items;
 
@@ -96,27 +98,5 @@ class StoreController extends AbstractController
     }
 
 
-    // /**
-    //  * @Route("/store/", name="store")
-    //  */
-    // public function filter(SpotifyWebAPI $api, Request $request): Response
-    // {
-    //     $offset = 0;
-    //     $searchParam = $request->get('paramFilter');
-
-    //     $albumsFilter = $api->albums->items;
-
-    //     $searchParam = $api->search('A','album',[
-    //         'offset' => $offset,
-    //         'limit' => 20
-    //     ]);
-
-    //     $albums = $searchParam->albums->items;
-
-        
-    //     return $this->render('store/index.html.twig', [
-    //         'albums' => $albums,
-    //     ]);
     
-    // }
 }

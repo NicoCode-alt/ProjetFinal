@@ -23,18 +23,6 @@ class CriticsController extends AbstractController
     {
         $critics = $criticRepository->findAll();
         
-        $critics = array_map(function ($critic) {
-            $critic->likeList = $critic->getLikes()->filter(function ($like) {
-                return $like->getValue() == 1;
-            });
-
-            $critic->dislikeList = $critic->getLikes()->filter(function($like) {
-                return $like->getValue() == 0;
-            });
-
-            return $critic;
-        }, $critics);
-        
         return $this->render('critics/critics_index.html.twig', [
             'critics' => $critics
         ]);

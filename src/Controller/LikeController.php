@@ -22,44 +22,40 @@ class LikeController extends AbstractController
     public function likeCritic(Critic $critic, UserInterface $user, EntityManagerInterface $manager, LikeRepository $likeRepo, Request $request): Response
     {
         $likeContent = $request->request->get('like');
-        $dislikeContent = $request->request->get('dislike');
+        $isLike = $likeContent === 'like';
 
-        if( $critic->isLikedBy($user))
+        $like = $likeRepo->findOneBy([
+            'user' => $user, 
+            'critic' => $critic
+        ]);
+
+        if($like)
         {
-            $like = $likeRepo->findOneBy([
-                'user' => $user, 
-                'critic' => $critic]);
-            $manager->remove($like);
-            $manager->flush();
+            if ($like->getValue() == $isLike) {
+                $manager->remove($like);
+                $like = null;
+            } else {
+                $like->setValue($isLike);
+            }
 
-            $liked = false;
+            $manager->flush();
         }else {
             $like= new Like();
             $like->setUser($user);
             $like->setCritic($critic);
-
-            // if ($likeContent === 'like') {
-            //     $like->setValue($likeContent === 'like');
-            //  } else {
-            //     $like->setValue($dislikeContent === 'dislike');
-            //  }
-
-             $like->setValue($likeContent === 'like');
+            $like->setValue($isLike);
             $manager->persist($like);
             $manager->flush();
-            
-            $liked = true;
+
+            $critic->addLike($like);
         }
 
         $donnees= [
-            'nombreLikes' => $likeRepo->count([
-                'critic'=>$critic
-            ]),
-            'liked'=> $liked,
-            'like' => $likeContent,
+            'critic' => $critic,
+            'like' => $like
         ];
 
-        return $this->json($donnees, 200);
+        return $this->render('partials/like_critics.html.twig', $donnees);
     }
 
     /**
@@ -70,41 +66,40 @@ class LikeController extends AbstractController
         $likeContent = $request->request->get('like');
         $isLike = $likeContent === 'like';
 
-        if( $commentary->isLikedBy($user))
-        {
-            $like = $likeRepo->findOneBy([
-                'user' => $user, 
-                'commentary' => $commentary
-            ]);
+        $like = $likeRepo->findOneBy([
+            'user' => $user, 
+            'commentary' => $commentary
+        ]);
 
+
+        if($like)
+        {
             if ($like->getValue() == $isLike) {
                 $manager->remove($like);
+                $like = null;
             } else {
                 $like->setValue($isLike);
             }
-            
+
             $manager->flush();
 
-            $liked = false;
         }else {
             $like= new Like();
             $like->setUser($user);
             $like->setCommentary($commentary);
             $like->setValue($isLike);
+
             $manager->persist($like);
             $manager->flush();
             
-            $liked = true;
+            $commentary->addLike($like);
         }
 
         $donnees= [
-            'nombreLikes' => $likeRepo->count([
-                'commentary'=>$commentary
-            ]),
-            'liked'=> $liked,
-            'like' => $likeContent
+            'commentary'=> $commentary,
+            'like' => $like
         ];
 
-        return $this->json($donnees, 200);
+        return $this->render('partials/like_commentary.html.twig', $donnees);
     }
 }

@@ -50,15 +50,8 @@
         <br>
         <p>Auteur du commentaire : {{ commentaire.user.username }}</p>
         <p>Votre commentaire : {{ commentaire.content }}</p>
-        <div>
-            <a class="boutonLike btn" data-action="like" href="{{ path("like_commentary", {id: commentaire.id}) }}">
-                <span class="nombreLikes">{{ commentaire.likes|length }}</span>
-                <i class="far fa-thumbs-up"></i>
-            </a> 
-            <a class="boutonLike btn" data-action="dislike" href="{{ path("like_commentary", {id: commentaire.id}) }}">
-                <span class="nombreLikes">{{ commentaire.likes|length }}</span>
-                <i class="fas fa-thumbs-down"></i>
-            </a> 
+        <div class="like_dislike">
+            {% include 'partials/like_commentary.html.twig' with {"like" : commentaire.getLikeBy(app.user)} %}
         </div>
 
 
