@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity("username")
- * @UniqueEntity("email")
+ * @UniqueEntity("email", message="Email déjà utilisé. Veuillez en choisir un autre.")
  */
 class User implements UserInterface
 {

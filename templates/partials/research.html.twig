@@ -1,11 +1,5 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Zikrit{% endblock %}
-
-{% block body %}
-
-    <section class="container_store mb-5">
-        <div class="background_view">
+<section class="container_store">
+        <div class="background_store">
             <div class="overlay_store">
                 <div class="row">
                     <div class="col-12 title_store text-center mt-4">
@@ -37,72 +31,8 @@
                             <button class="btn btn-primary btn-sm none" type="submit">Rechercher</button>
                         </form>
                     </div>
-                </div>    
+                </div> 
+                
             </div>
         </div>
     </section>
-
-    {% include 'partials/lateral_bar.html.twig' %}
-
-    <div class="container_view">
-        <div class="row responsive_view">
-            <div class="col-8">
-                <h3 class="text-center">Les albums</h3>
-                <div class="p_artist_album_name">
-                    {% for artist in album.artists %}
-                        <p>Artiste : <strong>{{ artist.name }}</strong></p>
-                        <p>Nom album : <strong> {{ album.name }}</strong></p>
-                    {% endfor %}
-                </div>
-                    <p class="card-text">Sortie le {{ album.release_date }}</p>
-                    <p class="card-text"> {{ album.copyrights[0].text }}</p>
-            </div>
-            <div class="col-4 image_view">
-                <img src="{{ album.images[0].url }}" class="" alt="Cover">
-                
-                    
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="d-flex flex-wrap flex-direction: column px-3 ">
-                {% for preview in album.tracks.items %} 
-                    <div class="px-2">
-                        <strong><h6>{{ preview.name }}</h6></strong>
-                        <audio controls src="{{ preview.preview_url }}"></audio>
-                    </div>
-                {% endfor %}
-            </div>
-                
-        </div>
-    </div>
-    
-    
-
-
-{% endblock %}

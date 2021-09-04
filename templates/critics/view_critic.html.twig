@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Zitics{% endblock %}
+{% block title %}Zikrit{% endblock %}
 
 {% block body %}
 
@@ -35,7 +35,7 @@
       {# Fin partie rating #}
 
       <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
-
+<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&width=113&height=20&appId" width="113" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
     </div>
   </div>
 
@@ -48,15 +48,16 @@
     {% for commentaire in critic.commentaries %}
     <hr>
         <br>
-        <p>Auteur du commentaire : {{ commentaire.user.username }}</p>
-        <p>Votre commentaire : {{ commentaire.content }}</p>
+        <h2 class="commentaire_titre text-center text-white fw-bold shadow p-3 mb-5 bg-body rounded w-75" >Section commentaire</h2>
+        <h3>Auteur du commentaire : {{ commentaire.user.username }}</h3>
+        <p class="fs-5">Son commentaire : {{ commentaire.content }}</p>
         <div class="like_dislike">
             {% include 'partials/like_commentary.html.twig' with {"like" : commentaire.getLikeBy(app.user)} %}
         </div>
 
 
         <hr>
-        {% if app.user %}
+        {% if app.user == commentaire.user.username %}
         <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
         {% endif %}
       {% endfor %}

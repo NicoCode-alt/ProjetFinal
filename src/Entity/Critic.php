@@ -163,7 +163,7 @@ class Critic
         return $this;
     }
 
-    public function getLikeBy(User $user): ?Like
+    public function getLikeBy(User $user=null): ?Like
     {
         foreach($this->likes as $like)
         {
