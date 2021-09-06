@@ -33,49 +33,50 @@
     <div class="container flex-nowrap">
         <div class="row responsive_card">
             {% for critic in critics %}
-            <div class="col-6 responsive_width">
+            <div class="col-4 responsive_width">
                 <div class="card m-4 shadow rounded gradient">
                     <img src="{{ critic.album.images[0].url }}" alt="Cover">
+               
                     <div class="card-body">
-                        <h4 class="card-title text-center">Critique de :</h4>
-                        <div class="user">
-                            <p>{{ critic.user.username }}</p>
-                            <p>Le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
-                        </div>
-                        <div class="comment mt-1">
-                            <h5 class="text-center">Commentaire critique</h5>
+                        <div class="comment">
                             <p>
-                            {{ critic.content[:25 ] ~ '[...]'}}
+                            {{ critic.content[:200] ~ '..'}}
                             </p>
-
-                            {# Debut partie rating #}
-                            <p>Sa note : {{ critic.rating }} / 10 
-                                {% if critic.rating == 0 %}
+                        </div>
+                         {# Debut partie rating #}
+                        <p class="">
+                            {% if critic.rating == 0 %}
+                                {% for i in 1..10 %}
+                                    <i class="far fa-star"></i>
+                                {% endfor %}
+                                {% elseif critic.rating == 10 %}
                                     {% for i in 1..10 %}
+                                        <i class="fas fa-star"></i>
+                                    {% endfor %}
+                                {% else %}
+                                    {# Boucle Etoiles pleines #}
+                                    {% for i in 1..critic.rating %}
+                                        <i class="fas fa-star"></i>
+                                    {% endfor %}
+                                    {# Boucle Etoiles vides #}
+                                    {% for i in 1..10-critic.rating %}
                                         <i class="far fa-star"></i>
                                     {% endfor %}
-                                    {% elseif critic.rating == 10 %}
-                                        {% for i in 1..10 %}
-                                            <i class="fas fa-star"></i>
-                                        {% endfor %}
-                                    {% else %}
-                                        {# Boucle Etoiles pleines #}
-                                        {% for i in 1..critic.rating %}
-                                            <i class="fas fa-star"></i>
-                                        {% endfor %}
-                                        {# Boucle Etoiles vides #}
-                                        {% for i in 1..10-critic.rating %}
-                                            <i class="far fa-star"></i>
-                                        {% endfor %}
-                                {% endif %}
-                            </p>
-                            {# Fin partie rating #}
+                            {% endif %}
+                        </p>
+                        {# Fin partie rating #}
+                        <div class="user d-flex justify-content-between">
+                            <p>{{ critic.user.username[:9 ] ~ '...' }}</p>
+                            <p>Le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
                         </div>
+                        
+                        <hr>
+                            
                         <div class="fonction">
                             <div class="like_dislike">
                                 {% include 'partials/like_critics.html.twig' with {"like" : critic.getLikeBy(app.user)} %}
                             </div>
-                            <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">En voir plus ...</a>
+                            <a class="btn btn-primary btn-sm" href="{{ path('view_critic', {id:critic.id}) }}">Lire ...</a>
                         </div>                                
                     </div>
                 </div>
