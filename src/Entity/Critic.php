@@ -54,6 +54,11 @@ class Critic
      */
     private $rating;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $album_id;
+
     public function __construct()
     {
         $this->commentaries = new ArrayCollection();
@@ -196,6 +201,18 @@ class Critic
     public function setRating(int $rating): self
     {
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    public function getAlbumId(): string
+    {
+        return $this->album_id;
+    }
+
+    public function setAlbumId(string $album_id): self
+    {
+        $this->album_id = $album_id;
 
         return $this;
     }
