@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Critic;
+use App\Form\CriticType;
 use SpotifyWebAPI\SpotifyWebAPI;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,17 +37,52 @@ class StoreController extends AbstractController
     
     }
 
+
     /**
      * @Route("/store/album/{id}", name="view_album")
      */
-    public function show(SpotifyWebAPI $api, Request $request, $id): Response
+    public function show(SpotifyWebAPI $api, $id, Request $request, EntityManagerInterface $manager, Critic $critic=null): Response
     {
         $album = $api->getAlbum($id);
 
+        $modeEdition = true;
+
+        if(!$critic){
+            $critic = new Critic();
+            $modeEdition = false;
+        }
+
+        $formulaire = $this->createForm(CriticType::class, $critic);
+        $formulaire->handleRequest($request);
+
+        if($formulaire->isSubmitted() && $formulaire->isValid())
+        {
+            if(!$modeEdition)
+            {
+                $critic->setCreatedAt(new \DateTime());
+                $critic->setUser($this->getUser());
+                $critic->setAlbumId($id);
+            }
+            
+            $manager->persist($critic);
+            $manager->flush();
+
+            return $this->redirectToRoute('view_critic', [
+                'id' => $critic->getId()
+            ]);
+        }
+
+
+
         return $this->render('store/view_album.html.twig', [
             'album' => $album,
+            "formulaire" => $formulaire->createView(),
+            "modeEdition" => $modeEdition
         ]);
     }
+
+
+
 
     /**
      * @Route("/store/search/{id}", name="search")
