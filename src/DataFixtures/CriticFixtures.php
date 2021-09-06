@@ -74,7 +74,7 @@ class CriticFixtures extends Fixture
                 }
                 for($k = 0; $k < 3; $k++){
                     $comment = new Commentary();
-                    $comment->setContent('asfdasdffa')
+                    $comment->setContent($faker->realText(200, 2))
                         ->setUser($user)
                         ->setCreatedAt(new \Datetime('now'))
                         ->setCritic($critic);
