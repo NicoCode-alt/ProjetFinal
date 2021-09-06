@@ -44,6 +44,7 @@
 
     {% include 'partials/lateral_bar.html.twig' %}
 
+    {# Infos sur l'album #}
     <div class="container_view">
         <div class="row responsive_view">
             <div class="col-8 text_card_view">
@@ -65,12 +66,13 @@
         </div>
     </div>
 
+    {# Partie preview #}
     <div class="table-responsive-md mt-5">
         <table class="table table-striped table-hover">
             <thead class="table_center">
                 <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Music</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Musique</th>
                 </tr>
             </thead>
             <tbody class="table_center ">
@@ -84,4 +86,25 @@
         </table>
     </div>
 
+    {# Partie formulaire #}
+    <div class="row">
+        <div class="col-3"></div>
+            <div class="col-6">
+    
+    {{ form_start(formulaire) }}
+
+        {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
+        {{ form_row(formulaire.rating) }}
+            
+        <div class="button">
+            <button class="btn btn-primary" type="submit">Enregistrer 
+                {% if modeEdition %} les modifications {% endif %}
+            </button>
+        </div>
+
+    {{ form_end(formulaire) }}
+
+            </div>
+        <div class="col-3"></div>
+    </div>
 {% endblock %}

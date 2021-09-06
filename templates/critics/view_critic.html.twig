@@ -4,13 +4,19 @@
 
 {% block body %}
 
-  <div class="card" style="width: 100%;">
-    <img src="https://source.unsplash.com/1024x200" class="card-img-top" style="max-height:200px" alt="...">
+
+  <div class="card text-center" style="width: 30%;">
+     <img src="{{ album.images[0].url }}" alt="Cover">
     <div class="card-body">
-      <h3 class="card-title">Nom de l'artiste</h3>
-      <h5 class="card-author">{{ critic.user.username }}</h5>
-      <p class="card-text">{{ critic.content }}</p>
-      <p class="card-text">{{ critic.createdAt | date("d/m/Y") }}</p>
+      {% for artist in album.artists %}
+          <p>Artiste : <strong>{{ artist.name }}</strong></p>
+          <p>Album : <strong> {{ album.name }}</strong></p>
+      {% endfor %}
+
+
+      <h5 class="card-author">Auteur de la critique : {{ critic.user.username }}</h5>
+      <p class="card-text">Commentaire :<br> {{ critic.content }}</p>
+      <p class="card-text">Ajouté le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
 
       {# Debut partie rating #}
       <p>Note : {{ critic.rating }} / 10 
@@ -32,6 +38,7 @@
                     <i class="far fa-star"></i>
                 {% endfor %}
         {% endif %}
+        </p>
       {# Fin partie rating #}
 
       <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
