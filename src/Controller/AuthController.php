@@ -32,7 +32,7 @@ class AuthController extends AbstractController
 
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('critics_index');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('auth/index.html.twig', [

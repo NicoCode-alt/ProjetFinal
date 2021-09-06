@@ -66,15 +66,59 @@
 /* CODE CSS POUR LES CARDS DE LA PAGE D'ACCUEIL critics_index.html.twig DANS DOSSIER TEMPLATE */
 
 .gradient {
-    background-image: linear-gradient(340deg, rgba(253,22,22, 0.02) 0%, rgba(253,22,22, 0.02) 34%,transparent 34%,
-    transparent 67%,rgba(185,42,42, 0.02) 67%, rgba(185,42,42, 0.02) 73%,rgba(247,55,55, 0.02) 73%, rgba(247,55,55, 0.02) 100%),
-    linear-gradient(320deg, rgba(148,39,39, 0.02) 0%, rgba(148,39,39, 0.02) 10%,transparent 10%, transparent 72%,
-    rgba(35, 35, 35,0.02) 72%, rgba(35, 35, 35,0.02) 76%,rgba(90,14,14, 0.02) 76%, rgba(90,14,14, 0.02) 100%),
-    linear-gradient(268deg, rgba(128, 128, 128,0.02) 0%, rgba(128, 128, 128,0.02) 5%,transparent 5%, transparent 76%,
-    rgba(214,72,72, 0.02) 76%, rgba(214,72,72, 0.02) 83%,rgba(224, 224, 224,0.02) 83%, rgba(224, 224, 224,0.02) 100%),
-    linear-gradient(198deg, rgba(218,84,84, 0.02) 0%, rgba(218,84,84, 0.02) 36%,transparent 36%, transparent 85%,
-    rgba(25,21,21, 0.02) 85%, rgba(25,21,21, 0.02) 99%,rgba(146,70,70, 0.02) 99%, rgba(146,70,70, 0.02) 100%),
-    linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+    background-image: linear-gradient(
+        340deg,
+        rgba(253,22,22, 0.02) 0%,
+        rgba(253,22,22, 0.02) 34%,
+        transparent 34%,
+        transparent 67%,
+        rgba(185,42,42, 0.02) 67%,
+        rgba(185,42,42, 0.02) 73%
+        rgba(247,55,55, 0.02) 73%,
+        rgba(247,55,55, 0.02) 100%
+    ),
+
+    linear-gradient(
+        320deg,
+        rgba(148,39,39, 0.02) 0%,
+        rgba(148,39,39, 0.02) 10%,
+        transparent 10%,
+        transparent 72%,
+        rgba(35, 35, 35,0.02) 72%,
+        rgba(35, 35, 35,0.02) 76%,
+        rgba(90,14,14, 0.02) 76%,
+        rgba(90,14,14, 0.02) 100%
+    ),
+
+    linear-gradient(
+        268deg,
+        rgba(128, 128, 128,0.02) 0%,
+        rgba(128, 128, 128,0.02) 5%,
+        transparent 5%,
+        transparent 76%,
+        rgba(214,72,72, 0.02) 76%,
+        rgba(214,72,72, 0.02) 83%,
+        rgba(224, 224, 224,0.02) 83%,
+        rgba(224, 224, 224,0.02) 100%
+    ),
+
+    linear-gradient(
+        198deg,
+        rgba(218,84,84, 0.02) 0%,
+        rgba(218,84,84, 0.02) 36%,
+        transparent 36%,
+        transparent 85%,
+        rgba(25,21,21, 0.02) 85%,
+        rgba(25,21,21, 0.02) 99%,
+        rgba(146,70,70, 0.02) 99%,
+        rgba(146,70,70, 0.02) 100%
+    ),
+
+    linear-gradient(
+        90deg,
+        rgb(255,255,255),
+        rgb(255,255,255)
+    );
 }
 
 .image_card {

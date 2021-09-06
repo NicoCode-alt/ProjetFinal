@@ -3,10 +3,11 @@
 {% block title %}Votre panier{% endblock %}
 
 {% block body %}
-    <h1>Votre Panier</h1>
-    <hr>
+
+    <h1 class="title_view_cart mt-4">Votre Panier :</h1>
+
     {% if items | length > 0 %}
-        <table class="table">
+        <table class="table table-hover mt-3">
             <thead>
                 <tr>
                     <th>Albums</th>
@@ -24,7 +25,7 @@
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.quantity * 5.99 }}€</td>
                         <td>
-                            <a href="{{ path('cart_remove', {id:item.product.id}) }}" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i> </a>
+                            <a href="{{ path('cart_remove', {id:item.product.id}) }}" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -32,13 +33,26 @@
             <tfoot>
                 <tr>
                     <td class="text-right"> <strong>Total :</strong></td>
-                    <td><strong>{{ total }} €</strong></td>
-                    <td><a href="{{ path('pay_cart') }}" class="btn btn-success btn-lg">Commander</a></td>
-                </tr>
+                    <td><strong>{{ total }} €</strong></td>                   
+                </tr>   
             </tfoot>
         </table>
+
+            <a href="{{ path('pay_cart') }}" class="btn btn-success">Commander</a>
+
     {% else %}
-        <p>Surprise, c'est vide !</p>
+        <section class="container_view_cart mt-4">
+            <div class="background_view_cart">
+                <div class="overlay_view_cart">
+                    <div class="row responsive_panier_vide">
+                        <div class="col-12 title_view_cart_h2">
+                            <img class="logo_smiley" src="{{ asset('assets/images/smiley_choquer.png') }}" alt="logo d'un smiley choquer">
+                            <h2>Surprise, c'est vide !</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     {% endif %}
 
 {% endblock %}

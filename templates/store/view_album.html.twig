@@ -46,63 +46,42 @@
 
     <div class="container_view">
         <div class="row responsive_view">
-            <div class="col-8">
-                <h3 class="text-center">Les albums</h3>
+            <div class="col-8 text_card_view">
+                <h3 class="text-center">L'album :</h3>
                 <div class="p_artist_album_name">
                     {% for artist in album.artists %}
                         <p>Artiste : <strong>{{ artist.name }}</strong></p>
                         <p>Nom album : <strong> {{ album.name }}</strong></p>
                     {% endfor %}
                 </div>
+                <div class="p_date_copyright">
                     <p class="card-text">Sortie le {{ album.release_date }}</p>
                     <p class="card-text"> {{ album.copyrights[0].text }}</p>
+                </div>
             </div>
             <div class="col-4 image_view">
-                <img src="{{ album.images[0].url }}" class="" alt="Cover">
-                
-                    
+                <img src="{{ album.images[0].url }}" class="" alt="Cover">      
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="d-flex flex-wrap flex-direction: column px-3 ">
-                {% for preview in album.tracks.items %} 
-                    <div class="px-2">
-                        <strong><h6>{{ preview.name }}</h6></strong>
-                        <audio controls src="{{ preview.preview_url }}"></audio>
-                    </div>
+    <div class="table-responsive-md mt-5">
+        <table class="table table-striped table-hover">
+            <thead class="table_center">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Music</th>
+                </tr>
+            </thead>
+            <tbody class="table_center ">
+                {% for preview in album.tracks.items %}
+                    <tr>
+                        <td><strong><h6>{{ preview.name }} : </h6></strong></td>
+                        <td><audio controls src="{{ preview.preview_url }}"></audio></td>
+                    </tr> 
                 {% endfor %}
-            </div>
-                
-        </div>
+            </tbody>
+        </table>
     </div>
-    
-    
-
 
 {% endblock %}
