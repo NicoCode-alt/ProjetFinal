@@ -29,28 +29,113 @@
         {% endfor %}
         <h5 class="self-end"><strong>Total {{ finalPrice }} euros</strong> </h5>
     </div>
+
     <hr>
-     <form id="payment-form">
 
-      <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+    <form action="{{ path('paiement_load', {'id':orderId}) }}" method="post" id="payment-form">
+      <div class="form-row">
+        <div id="card-elements"></div>
 
-      <button id="submit">
+        <script src="https://js.stripe.com/v3/"></script>
 
-        <div class="spinner hidden" id="spinner"></div>
+        <div id="card-erros" role="alert"></div>
 
-        <span id="button-text">Pay now</span>
-
+      </div>
+      <button class="btn btn-primary mt-4">
+          Acheter {{ finalPrice }} euros
       </button>
-
-      <p id="card-error" role="alert"></p>
-
-      <p class="result-message hidden">
-
-        Payment succeeded, see the result in your
-
-        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-
-      </p>
-
     </form>
+
 {% endblock %}
+
+{% block JavaScript %}
+
+  <script>
+    var stripeToken = "{{ stripe_public_key_test }}";
+
+    var stripe = Stripe(stripeToken);
+    var elements = stripe.elements();
+    var subscription = "{{ items.orderId }}";
+    var clientSecret = {{ intentScret }};
+    var cardholderName = {{ app.user.lastname }};
+    var cardholderEmail = {{ app.user.email }};
+
+    var styleCustom = {
+      base:{
+        fontSize: '16px',
+        color: '#25332d'
+      }
+    }
+
+    var card = elements.create('card', {style: styleCustom});
+
+    card.mount("#card-elements");
+
+    card.addEventListener('change', function(event){
+      var displayError = document.getElementById('card-errors');
+
+      if(event.error) {
+        displayError.textContent = event.error.message;
+      } else {
+        displayError.textContent = "";
+      }
+    });
+
+  var form = document.getElementById('payment-form');
+
+  form.addEventListener('submit', function(event) => {
+    event.preventDefault();
+
+    stripe.handleCardPayment(
+      clientSecret,
+      card,
+      {
+        paiement_method_data: {
+          billing_details:{
+            name: cardholderName,
+            email: cardholderEmail
+          }
+        }
+      }
+    ).then((result)=>{
+      if(result.error){
+
+      } else if ('paymentIntent' in result){
+        stripeTokenHandler(result.paymentIntent);
+      }
+    })
+  });
+
+  function stripeTokenHandler(intent){
+    var form = document.getElementById('payment-form');
+    var inputIntentId = document.createElement('input') ;
+    var inputIntentPaymentMethod = document.createElement('input');
+    var inputIntentStatus = document.createElement('input');
+    var inputSubscription = document.createElement('input');
+
+    inputIntentPaymentMethod.setAttribute('type', 'hidden');
+    inputIntentPaymentMethod.setAttribute('name', 'stripeIntentPaymentMethod');
+    inputIntentPaymentMethod.setAttribute('value', 'intent.payment-method');
+
+    inputIntentId.setAttribute('type', 'hidden');
+    inputIntentId.setAttribute('name', 'stripeIntentId');
+    inputIntentId.setAttribute('value', 'intent.id');
+
+    inputIntentStatus.setAttribute('type', 'hidden');
+    inputIntentStatus.setAttribute('name', 'stripeIntentStatus');
+    inputIntentStatus.setAttribute('value', 'intent.status');
+
+    inputSubscription.setAttribute('type', 'hidden');
+    inputSubscription.setAttribute('name', 'subscription');
+    inputSubscription.setAttribute('value', 'subscription');
+
+    form.appendChild(inputIntentPaymentMethod);
+    form.appendChild(inputIntentId);
+    form.appendChild(inputIntentStatus);
+    form.appendChild(inputSubscription);
+    form.submit();
+
+  }
+
+  </script>
+  {% endblock %}
