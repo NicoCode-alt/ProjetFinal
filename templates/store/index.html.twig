@@ -7,35 +7,33 @@
      {% include 'partials/research.html.twig' %}            
      {% include 'partials/lateral_bar.html.twig' %}
     
-    <h3 class="title_h3">Dernieres sorties :</h3>
+    <h3 class="title_h3">Dernières sorties :</h3>
 
     <div class="container flex-nowrap">
         <div class="row responsive_card_store">
             {% for new in newReleases %}
-
                 <div class="card m-2 shadow" style="width: 15rem;">
                     <img src="{{ new.images[1].url }}" class="card-img-top pt-2" alt="Cover">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                            {% for artist in new.artists %}
-                                <strong>{{ artist.name }}</strong>
-                            {% endfor %}<br>
-                            {{ new.name }}
-                            </h5>
-                            <p class="card-text">Sortie le {{ new.release_date }}</p>
-                            <div class="container_link">
-                                <div class="overlay_link">
-                                    <div class="text_link">
-                                        <div class="logo_card_link">
-                                            <a href="{{ path('view_album', {id:new.id})}}"><img class="logo_loupe" src="{{ asset('assets/images/loupe.png') }}" width="64px" height="64px" alt="logo d'une loupe"></a>
-                                            <a href="{{ path('cart_add', {id:new.id}) }}"><img class="logo_caddie" src="{{ asset('assets/images/panier.png') }}" width="64px" height="64px" alt="logo d'un caddie"></a>
-                                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        {% for artist in new.artists %}
+                            <strong>{{ artist.name }}</strong>
+                        {% endfor %}<br>
+                        {{ new.name }}
+                        </h5>
+                        <p class="card-text">Sortie : {{ new.release_date }}</p>
+                        <div class="container_link">
+                            <div class="overlay_link">
+                                <div class="text_link">
+                                    <div class="logo_card_link">
+                                        <a href="{{ path('view_album', {id:new.id})}}"><img class="logo_loupe" src="{{ asset('assets/images/loupe.png') }}" width="64px" height="64px" alt="logo d'une loupe"></a>
+                                        <a href="{{ path('cart_add', {id:new.id}) }}"><img class="logo_caddie" src="{{ asset('assets/images/panier.png') }}" width="64px" height="64px" alt="logo d'un caddie"></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
-
             {% endfor %}
         </div>
     </div>

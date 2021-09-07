@@ -14,7 +14,7 @@
 }
 
 .background_critics {
-    background: url('../images/img_background.jpg');
+    background: url("../images/img_background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -23,47 +23,63 @@
 }
 
 .overlay_critics {
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.45);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
 }
 
 /* 
 .title / .anim_title / @keyframes typewriter / @keyframes blinkTextCursor et 
 .typing sont les classes pour l'animation de mon titre h1 "Zikrit vous souhaite la bienvenue.,"
 */
-.title {    
+.title {
+    font-family: "Lucida Sans", "Lucida Sans Regular";
     margin: 0 auto;
-    margin-top: 4rem;
-    font-size: 4em;
-    border-right: 3px solid rgba(0, 0, 0, 0.70);   
+    margin-top: 6rem;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 3px rgb(54, 43, 43);
+    font-size: 6em;
+    border-right: 3px solid rgba(0, 0, 0, 0.7);
     white-space: nowrap;
-    overflow: hidden; 
-    color: rgb( 255, 255, 255);
+    overflow: hidden;
+    color: rgba(187, 168, 168, 0.9);
 }
 
 .anim_title {
     animation: typewriter 1s steps(44) 1s 1 normal both,
-               blinkTextCursor 500MS steps(44) infinite normal;
+        blinkTextCursor 500ms steps(44) infinite normal;
 }
 
 @keyframes typewriter {
-    from{width: 0em;}
-    to{width: 3em;}
+    from {
+        width: 0em;
+    }
+    to {
+        width: 4em;
+    }
 }
 
 @keyframes blinkTextCursor {
-    from{border-right-color: rgb( 0, 0, 0);}
-    to{border-right-color: transparent;}
+    from {
+        border-right-color: rgb(0, 0, 0);
+    }
+    to {
+        border-right-color: transparent;
+    }
 }
 
 .title_welcome {
-    font-size: 2em;
+    font-size: 3rem;
     margin-top: 1rem;
-    color: rgb( 255, 255, 255);
+    text-transform: uppercase;
+    color: rgba(226, 226, 226, 0.9);
 }
 
 /* CODE CSS POUR LES CARDS DE LA PAGE D'ACCUEIL critics_index.html.twig DANS DOSSIER TEMPLATE */
+
+.critic_title {
+    font-family: "Lucida Sans", "Lucida Sans Regular";
+}
 
 .image_card {
     height: 40vh;
@@ -90,17 +106,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-
     .responsive_width {
         display: flex;
         align-content: center;
         width: 50%;
     }
-
 }
 
 @media screen and (max-width: 992px) {
-
     .responsive_card {
         display: flex;
         flex-direction: column;
@@ -110,13 +123,10 @@
     .responsive_width {
         width: 85%;
     }
-  
 }
 
 @media screen and (max-width: 768px) {
-
     .responsive_width {
         width: 100%;
     }
-    
 }

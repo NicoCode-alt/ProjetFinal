@@ -11,17 +11,24 @@
           <img src="{{ album.images[0].url }}" width="auto" height="500px" alt="Cover">
 
           <div class="card-body">
-            {% for artist in album.artists %}
-                <p>Artiste : <strong>{{ artist.name }}</strong></p>
-                <p>Album : <strong> {{ album.name }}</strong></p>
-            {% endfor %}
+            <div class="d-flex justify-content-around fs-3 mb-4 shadow-sm p-3 mb-5 rounded">
+              {% for artist in album.artists %}
+                  <p >Artiste : <strong>{{ artist.name }}</strong></p>
+                  <p >Album : <strong> {{ album.name }}</strong></p>
+              {% endfor %}
+            </div>
 
-              <h5 class="card-author">Auteur de la critique : {{ critic.user.username }}</h5>
-              <p class="card-text">Commentaire :<br> {{ critic.content }}</p>
-              <p class="card-text">Ajouté le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
-
+            <div>
+                <h5 class="card-author">Pseudo : {{ critic.user.username }}</h5>
+                <p class="card-text mt-4">Commentaire :<br> {{ critic.content }}</p>
+                <p class="card-text mb-3 fst-italic text-muted">Ajouté le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
+            </div>
+              
             {# Debut partie rating #}
-            <p>Note : {{ critic.rating }} / 10 
+            <p class="fw-bold {% if critic.rating < 5 %} text-danger
+            {% elseif  critic.rating <= 7 %} text-warning
+            {% elseif  critic.rating > 7 %} text-success 
+            {% endif %} ">Note : {{ critic.rating }} / 10 
               {% if critic.rating == 0 %}
                   {% for i in 1..10 %}
                       <i class="far fa-star"></i>
@@ -59,7 +66,7 @@
 
   <div class="row justify-content-center margin_title">
     <div class="col-12">
-      <h2 class="commentaire_titre text-center text-white fw-bold shadow p-3 mb-5 bg-body rounded" >Section commentaire</h2>
+      <h2 class="commentaire_titre text-center text-white fw-bold shadow p-3 mb-5 bg-success rounded" >Section commentaire</h2>
     </div>
   </div>
 
@@ -72,17 +79,16 @@
       <div class="card text-center mt-5">
 
         <div class="card-header">
-          <h3>Auteur du commentaire : {{ commentaire.user.username }}</h3>
+          <h4>{{ commentaire.user.username }}</h4>
         </div>
 
         <div class="card-body">
-          <h4 class="card-title">Les commentaires :</h4>
           <p>{{ commentaire.content }}</p>
           <div class="like_dislike">
               {% include 'partials/like_commentary.html.twig' with {"like" : commentaire.getLikeBy(app.user)} %}
           </div>
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted fst-italic">
           L'équipe Zikrit vous remercie de votre commentaire.
         </div>
 

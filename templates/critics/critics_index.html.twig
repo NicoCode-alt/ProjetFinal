@@ -9,13 +9,13 @@
                 <div class="container_title">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <h1 class="title anim_title">Zikrit</h1>
+                            <h1 class="title anim_title mb-5">Zikrit</h1>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-12 text-center" data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="2100">
-                            <h2 class="title_welcome">vous souhaite la bienvenue.</h2>
+                            <h2 class="title_welcome mt-5">vous souhaite la bienvenue.</h2>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-8">
             <hr>
-            <h3 id="critics_title" class="text-center">Les critiques de musique</h3>
+            <h3 id="critics_title" class="text-center critic_title">Les critiques de musique</h3>
         </div>
     </div>
 
@@ -40,11 +40,14 @@
                     <div class="card-body">
                         <div class="comment">
                             <p>
-                            {{ critic.content[:200] ~ '..'}}
+                            {{ critic.content[:100] ~ '..'}}
                             </p>
                         </div>
                          {# Debut partie rating #}
-                        <p class="">
+                        <p class="fw-bold {% if critic.rating <= 4 %} text-danger 
+                        {% elseif  critic.rating <= 7 %} text-warning
+                        {% elseif  critic.rating > 7 %} text-success
+                        {% endif %} ">
                             {% if critic.rating == 0 %}
                                 {% for i in 1..10 %}
                                     <i class="far fa-star"></i>
@@ -66,8 +69,8 @@
                         </p>
                         {# Fin partie rating #}
                         <div class="user d-flex justify-content-between">
-                            <p>{{ critic.user.username[:9 ] ~ '...' }}</p>
-                            <p>Le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
+                            <p class="fst-italic">{{ critic.user.username[:15 ] ~ '...' }}</p>
+                            <p class="fst-italic">Le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
                         </div>
                         
                         <hr>
