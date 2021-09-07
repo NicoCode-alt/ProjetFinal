@@ -8,17 +8,6 @@
     {% include 'partials/lateral_bar.html.twig' %}
     
     <h3 class="title_h3">Les albums :</h2>
-    
-    <div class="card-body d-flex justify-content-start align-items-center px-5">
-        <a href="{{ path('search', {id:id, search: app.request.query.get('search') }) }}" class="btn btn-warning btn-lg">
-            Voir plus
-        </a>
-        {% if id < 0 %}
-            <p>Page: {{id}}</p>
-        {% endif %}
-    </div>
-
-
 
     <div class="container flex-nowrap">
         <div class="row responsive_card_store">      
@@ -50,17 +39,25 @@
         </div>
     </div>
 
-    <div class="card-body d-flex justify-content-start align-items-center px-5">
-                    <a href="{{ path('search', {id:id, search: app.request.query.get('search')}) }}" class="btn btn-warning btn-lg">
-                        Voir plus
+    <div class="card-body d-flex justify-content-center align-items-center px-5">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('search', {id:id, search: app.request.query.get('search')}) }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
                     </a>
-                    {% if id < 0 %}
-                    <p>Page: {{id}}</p>
-                    {% endif %}
-                </div>
-    
-    
-    
-
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('search', {id:id, search: app.request.query.get('search')}) }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        {% if id < 0 %}
+            <p>Page: {{id}}</p>            
+        {% endif %}
+    </div>
 
 {% endblock %}

@@ -38,11 +38,6 @@
     margin: 2rem 2rem;
 }
 
-.logo_panier_view {
-    margin-right: 4rem;
-    margin-top: -2rem;
-}
-
 .table_center {
     text-align: center;
 }
@@ -70,6 +65,12 @@
         max-height: 300px;
         margin: auto;
     }
+
+    .logo_panier_view {
+        margin: auto;
+        margin-bottom: 1.5rem;
+        margin-top: -1.5rem;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -80,11 +81,6 @@
         display: block;
         justify-content: center;
         align-items: center;
-    }
-
-    .logo_panier_view img {
-        display: flex;
-        justify-content: flex-end;
     }
 
     .table_center {
