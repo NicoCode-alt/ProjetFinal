@@ -52,11 +52,13 @@
     );
 }
 
-/* CODE CSS DE LA NAV BAR ET FOOTER */
+/* CODE CSS DE LA NAV BAR */
 
-/* 
-Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed 
-*/
+.margin_nav a {
+    margin-top: 9px;
+}
+
+/* Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed */
 
 .header {
     position: relative;
@@ -100,7 +102,7 @@ Code css pour ma fonction JavaScript du scroll de la nav_bar = .fixed
     cursor: pointer;
 }
 
-/* CODE CSS DE LE FOOTER */
+/* CODE CSS POUR LE FOOTER */
 
 footer {
     margin: 2rem;

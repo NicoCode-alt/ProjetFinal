@@ -71,34 +71,32 @@
                                 </div>
                             {% endif %}
 
-                            <div class="d-flex align-items-center">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ path('critics_index')}}#critics_title">Les critiques</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active"  href="{{ path('store') }}">Musicothèque</a>
-                                </li>
+                            <li class="nav-item margin_nav">
+                                <a class="nav-link active" aria-current="page" href="{{ path('critics_index')}}#critics_title">Les critiques</a>
+                            </li>
+                            <li class="nav-item margin_nav">
+                                <a class="nav-link active"  href="{{ path('store') }}">Musicothèque</a>
+                            </li>
                                 
-                                {% if app.user %}
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="{{ path('create_critic')}}">Ajouter une critique</a>
-                                    </li>
-                                    {% else %}
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{ path('register')}}">Inscription</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{ path('login')}}">Connexion</a>
-                                    </li>
-                                {% endif %}
+                            {% if app.user %}
+                                <li class="nav-item margin_nav">
+                                    <a class="nav-link active" aria-current="page" href="{{ path('create_critic')}}">Ajouter une critique</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item margin_nav">
+                                    <a class="nav-link active" href="{{ path('register')}}">Inscription</a>
+                                </li>
+                                <li class="nav-item margin_nav">
+                                    <a class="nav-link active" href="{{ path('login')}}">Connexion</a>
+                                </li>
+                            {% endif %}
 
-                                {% if app.user %}
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{ path('logout')}}">Déconnexion</a>
-                                    </li>
-                                {% endif %}
-                                <a class="nav-link active" href="{{ path('view_cart')}}"><img class="logo_nav" src="{{ asset('assets/images/panier.png') }}" alt="Logo d'un caddie" width="40px" height="40px"></a>
-                            </div>
+                            {% if app.user %}
+                                <li class="nav-item margin_nav">
+                                    <a class="nav-link active" href="{{ path('logout')}}">Déconnexion</a>
+                                </li>
+                            {% endif %}
+                            <a class="nav-link active" href="{{ path('view_cart')}}"><img class="logo_nav" src="{{ asset('assets/images/panier.png') }}" alt="Logo d'un caddie" width="40px" height="40px"></a>
 
 						</ul>
 					</div>
