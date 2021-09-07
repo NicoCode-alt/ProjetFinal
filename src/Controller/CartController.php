@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use SpotifyWebAPI\SpotifyWebAPI;
-use Stripe\Stripe;
+// use Stripe\Stripe;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -83,7 +83,7 @@ class CartController extends AbstractController
         /**
          * @Route("/cart/pay", name="pay_cart", priority=1)
          */
-        public function payCart(Stripe $stripe, SpotifyWebAPI $api, SessionInterface $session, EntityManagerInterface $manager): Response
+        public function payCart(SpotifyWebAPI $api, SessionInterface $session, EntityManagerInterface $manager): Response
         {
             
             $cartData = $session->get('cart', []);
