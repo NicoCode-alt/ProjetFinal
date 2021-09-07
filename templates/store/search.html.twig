@@ -25,7 +25,7 @@
             {% for album in albums %}
 
                 <div class="card m-2 shadow" style="width: 15rem;">
-                    <img src="{{ album.images[1].url }}" class="card-img-top pt-2" alt="Cover">
+                    <img src="{{ album.images[0].url }}" class="card-img-top pt-2" alt="Cover">
                         <div class="card-body">
                             <h5 class="card-title">
                             {% for artist in album.artists %}

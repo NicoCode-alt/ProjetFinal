@@ -8,36 +8,49 @@
         <div class="col-8 img_remerciement"></div>
         <div class="col-4 title_pay_cart">
             <h1>Confirmez votre commande</h1>
-            <h3>Commande 1234567</h3>
+            <h3>Commande {{ orderId }}</h3>
         </div>
     </div>
 
-     
-    <ul>
-        {# {% for item in items %}
-            <li>
-                <img src="{{ item.product.images[2].url }}" alt="Cover"><br>
-                <strong><p>{{ item.product.name }} </p></strong>
-                {% for artist in item.artists %}
-                    <p>{{ artist.name }} </p>
-                {% endfor %}
-            </li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {% for item in items %}
-            <li>
-                Quantité = {{ item.quantity }}
-            </li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {% for item in items %}
-            <li>
-                {{ item quantity * item.price }}
-            </li>
-        {{ endfor }} #}
-    </ul>
-    
 
+     
+   
+    <div class="container row pt-3">
+        {% for item in items %}
+           <div class="container-fluid d-flex align-items-center justify-content-around">
+                <img src="{{ item.imageUrl }}" alt="Cover" style="width:5rem"><br>
+                <strong><p>{{ item.albumName }} </p></strong>
+                
+                    <p>{{ item.artistName }} </p>
+                    x {{ item.albumQuantity }}
+                    <strong>{{ item.albumQuantity * item.albumPrice }} euros</strong>
+           </div>
+
+        {% endfor %}
+        <h5 class="self-end"><strong>Total {{ finalPrice }} euros</strong> </h5>
+    </div>
+    <hr>
+     <form id="payment-form">
+
+      <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+
+      <button id="submit">
+
+        <div class="spinner hidden" id="spinner"></div>
+
+        <span id="button-text">Pay now</span>
+
+      </button>
+
+      <p id="card-error" role="alert"></p>
+
+      <p class="result-message hidden">
+
+        Payment succeeded, see the result in your
+
+        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+
+      </p>
+
+    </form>
 {% endblock %}

@@ -48,6 +48,16 @@ class Cart
      */
     private $quantity;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $albumName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $artistName;
+
 
     public function getId(): ?int
     {
@@ -122,6 +132,30 @@ class Cart
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getAlbumName(): ?string
+    {
+        return $this->albumName;
+    }
+
+    public function setAlbumName(string $albumName): self
+    {
+        $this->albumName = $albumName;
+
+        return $this;
+    }
+
+    public function getArtistName(): ?string
+    {
+        return $this->artistName;
+    }
+
+    public function setArtistName(string $artistName): self
+    {
+        $this->artistName = $artistName;
 
         return $this;
     }

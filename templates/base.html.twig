@@ -32,10 +32,18 @@
             <link rel="stylesheet" href="{{ asset('assets/style/musicotheque.css') }}"> <!-- POUR LA TEMPLATE index.html.twig DANS DOSSIER STORE, MAGASIN MUSICOTHEQUE -->
             <link rel="stylesheet" href="{{ asset('assets/style/view_album.css') }}"> <!-- POUR LA TEMPLATE view_album.html.twig DANS DOSSIER STORE, VIEW ALBUM MUSICOTHEQUE -->
             <link rel="stylesheet" href="{{ asset('assets/style/view_cart.css') }}"> <!-- POUR LA TEMPLATE view_cart.html.twig DANS DOSSIER STORE, VIEW CART MUSICOTHEQUE -->
+
+            <!--Stripe -->
+            <link rel="stylesheet" href="/assets/style/global.css" />
             
         {% endblock %}
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <!-- Stripe -->
+            <script src="https://js.stripe.com/v3/"></script>
+            <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+            <script src="/assets/javaScript/stripe.js" defer></script>
+        {% endblock %}
 
         <title>{% block title %}Zikrit{% endblock %}</title>
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon-32x32.png') }}" alt="Logo d'une guitare">
