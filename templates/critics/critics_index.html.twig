@@ -32,7 +32,7 @@
 
     <div class="container flex-nowrap">
         <div class="row responsive_card">
-            {% for critic in critics %}
+            {% for critic in critics|reverse %}
             <div class="col-4 responsive_width">
                 <div class="card m-4 shadow rounded">
                     <img src="{{ critic.album.images[0].url }}" alt="Cover">
