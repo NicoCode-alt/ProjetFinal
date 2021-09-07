@@ -23,11 +23,15 @@ class CartController extends AbstractController
 
         $cartData = [];
 
-        foreach($cart as $id=>$quantity){
-            $cartData[]=[
-                'product'=> $api->getAlbum($id),
-                'quantity' => $quantity
-            ];
+        if (is_array($cart) || is_object($cart)) {
+            
+            foreach($cart as $id=>$quantity){
+                $cartData[]=[
+                    'product'=> $api->getAlbum($id),
+                    'quantity' => $quantity
+                ];
+            }
+
         }
 
         $total = 0;
