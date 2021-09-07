@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use Stripe\Stripe;
 use App\Entity\Cart;
 use App\Manager\CartManager;
-use App\Services\StripeService;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -132,7 +130,7 @@ class CartController extends AbstractController
         }
 
         /**
-         * @Route("/cart/subscription/{id}/paiement/load", name"paiement_load")
+         * @Route("/cart/subscription/{id}/paiement/load", name="paiement_load")
          */
         public function subscription(Cart $cart, Request $request, CartManager $cartManager)
         {
