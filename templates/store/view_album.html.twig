@@ -59,6 +59,9 @@
                     <p class="card-text">Sortie le {{ album.release_date }}</p>
                     <p class="card-text"> {{ album.copyrights[0].text }}</p>
                 </div>
+                <div class="d-flex justify-content-end logo_panier_view">
+                    <a href="{{ path('view_cart')}}"><img src="{{ asset('assets/images/panier.png') }}" alt="Logo d'un caddie" width="64px" height="64px"></a>
+                </div>
             </div>
             <div class="col-4 image_view">
                 <img src="{{ album.images[0].url }}" class="" alt="Cover">      
@@ -88,23 +91,29 @@
 
     {# Partie formulaire #}
     <div class="row">
-        <div class="col-3"></div>
-            <div class="col-6">
+        <div class="col-2"></div>
+            <div class="col-8">
     
-    {{ form_start(formulaire) }}
+                {{ form_start(formulaire) }}
+                    
+                        {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
+                        <div class="row">
+                            <div class="col-5"></div>
+                                <div class=" col-2 form_view_album">
+                                    {{ form_row(formulaire.rating) }}
+                                </div>
+                            <div class="col-5"></div>
+                        </div>
+                        
+                    <div class="button">
+                        <button class="btn btn-primary" type="submit">Enregistrer 
+                            {% if modeEdition %} les modifications {% endif %}
+                        </button>
+                    </div>
 
-        {{ form_row(formulaire.content, {'attr': {'placeholder': 'Ecrivez ici votre critique de musique'}}) }}
-        {{ form_row(formulaire.rating) }}
-            
-        <div class="button">
-            <button class="btn btn-primary" type="submit">Enregistrer 
-                {% if modeEdition %} les modifications {% endif %}
-            </button>
-        </div>
-
-    {{ form_end(formulaire) }}
+                {{ form_end(formulaire) }}
 
             </div>
-        <div class="col-3"></div>
+        <div class="col-2"></div>
     </div>
 {% endblock %}

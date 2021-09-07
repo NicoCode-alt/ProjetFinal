@@ -4,93 +4,121 @@
 
 {% block body %}
 
+  <div class="row mt-4 mb-4">
+    <div class="col-2"></div>
+      <div class="col-8">
+        <div class="card text-center">
+          <img src="{{ album.images[0].url }}" width="auto" height="500px" alt="Cover">
 
-  <div class="card text-center" style="width: 30%;">
-     <img src="{{ album.images[0].url }}" alt="Cover">
-    <div class="card-body">
-      {% for artist in album.artists %}
-          <p>Artiste : <strong>{{ artist.name }}</strong></p>
-          <p>Album : <strong> {{ album.name }}</strong></p>
-      {% endfor %}
-
-
-      <h5 class="card-author">Auteur de la critique : {{ critic.user.username }}</h5>
-      <p class="card-text">Commentaire :<br> {{ critic.content }}</p>
-      <p class="card-text">Ajouté le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
-
-      {# Debut partie rating #}
-      <p>Note : {{ critic.rating }} / 10 
-        {% if critic.rating == 0 %}
-            {% for i in 1..10 %}
-                <i class="far fa-star"></i>
+          <div class="card-body">
+            {% for artist in album.artists %}
+                <p>Artiste : <strong>{{ artist.name }}</strong></p>
+                <p>Album : <strong> {{ album.name }}</strong></p>
             {% endfor %}
-            {% elseif critic.rating == 10 %}
-                {% for i in 1..10 %}
-                    <i class="fas fa-star"></i>
-                {% endfor %}
-            {% else %}
-                {# Boucle Etoiles pleines #}
-                {% for i in 1..critic.rating %}
-                    <i class="fas fa-star"></i>
-                {% endfor %}
-                {# Boucle Etoiles vides #}
-                {% for i in 1..10-critic.rating %}
-                    <i class="far fa-star"></i>
-                {% endfor %}
-        {% endif %}
-        </p>
-      {# Fin partie rating #}
 
-      <a href="{{ path('critics_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
-<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&width=113&height=20&appId" width="113" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <h5 class="card-author">Auteur de la critique : {{ critic.user.username }}</h5>
+              <p class="card-text">Commentaire :<br> {{ critic.content }}</p>
+              <p class="card-text">Ajouté le {{ critic.createdAt | date("d/m/Y à H:i") }}</p>
+
+            {# Debut partie rating #}
+            <p>Note : {{ critic.rating }} / 10 
+              {% if critic.rating == 0 %}
+                  {% for i in 1..10 %}
+                      <i class="far fa-star"></i>
+                  {% endfor %}
+                  {% elseif critic.rating == 10 %}
+                      {% for i in 1..10 %}
+                          <i class="fas fa-star"></i>
+                      {% endfor %}
+                  {% else %}
+                      {# Boucle Etoiles pleines #}
+                      {% for i in 1..critic.rating %}
+                          <i class="fas fa-star"></i>
+                      {% endfor %}
+                      {# Boucle Etoiles vides #}
+                      {% for i in 1..10-critic.rating %}
+                          <i class="far fa-star"></i>
+                      {% endfor %}
+              {% endif %}
+              </p>
+            {# Fin partie rating #}
+
+            <div class="btn_view_critic">
+              <a href="{{ path('critics_index') }}" class="btn btn-primary">Retour à l'accueil</a>
+              <iframe
+                src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&width=113&height=20&appId"
+                width="113" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-2"></div>
+  </div>  
+
+  <div class="row justify-content-center margin_title">
+    <div class="col-12">
+      <h2 class="commentaire_titre text-center text-white fw-bold shadow p-3 mb-5 bg-body rounded" >Section commentaire</h2>
     </div>
   </div>
 
-  <div class="border">
+  {% if critic.commentaries|length == 0 %}
+    <p class="text-center"><strong>Il n'y a pas de commentaires</strong></p>
+  {% else %}
 
-    {% if critic.commentaries|length == 0 %}
-    <hr>
-    <p><strong>Il n'y a pas de commentaires</strong></p>
-    {% else %}
     {% for commentaire in critic.commentaries %}
-    <hr>
-        <br>
-        <h2 class="commentaire_titre text-center text-white fw-bold shadow p-3 mb-5 bg-body rounded w-75" >Section commentaire</h2>
-        <h3>Auteur du commentaire : {{ commentaire.user.username }}</h3>
-        <p class="fs-5">Son commentaire : {{ commentaire.content }}</p>
-        <div class="like_dislike">
-            {% include 'partials/like_commentary.html.twig' with {"like" : commentaire.getLikeBy(app.user)} %}
+
+      <div class="card text-center mt-5">
+
+        <div class="card-header">
+          <h3>Auteur du commentaire : {{ commentaire.user.username }}</h3>
         </div>
 
+        <div class="card-body">
+          <h4 class="card-title">Les commentaires :</h4>
+          <p>{{ commentaire.content }}</p>
+          <div class="like_dislike">
+              {% include 'partials/like_commentary.html.twig' with {"like" : commentaire.getLikeBy(app.user)} %}
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          L'équipe Zikrit vous remercie de votre commentaire.
+        </div>
 
-        <hr>
-        {% if app.user == commentaire.user.username %}
-        <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-</div>
+      </div>
 
-<div class="border">
-
-  {% if app.user %}
-    {{form_start(formulaire)}}
-
-      {{ form_row(formulaire.content) }}
-
-      <button type="submit" class="btn btn-success">Envoyer</button>
-
-    {{form_end(formulaire)}}
-
-  {% else %}
-    <p>Veuillez vous connecter pour laisser un commentaire</p>
-    <a href="{{ path('login') }}" class="btn btn-success">Connexion</a>
+      {% if app.user == commentaire.user.username %}
+        <div class="btn_content">
+          <a href="{{ path('delete_commentary', {id:commentaire.id}) }}" class="btn btn-danger">Supprimer le commentaire</a>
+        </div>  
+      {% endif %}
+    {% endfor %}
   {% endif %}
-</div>
 
+  <div class="row mt-3">
+    <div class="col-2"></div>
+      <div class="col-8">
+        {% if app.user %}
+          {{form_start(formulaire)}}
+
+            {{ form_row(formulaire.content) }}
+          <div class="btn_content">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+          </div>
+          {{form_end(formulaire)}}
+
+        {% else %}
+          <p class="text-center mt-3">Veuillez vous connecter pour laisser un commentaire.</p>
+          <div class="btn_content">
+            <a href="{{ path('login') }}" class="btn btn-primary ">Connexion</a>
+          </div>
+        {% endif %}
+      </div>
+    <div class="col-2"></div>
+  </div>
 
 {% endblock %}
-
 
 {% block javascripts %}
     <script src="{{ asset('assets/javaScript/like.js') }}"></script>

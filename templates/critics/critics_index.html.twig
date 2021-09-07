@@ -34,7 +34,7 @@
         <div class="row responsive_card">
             {% for critic in critics %}
             <div class="col-4 responsive_width">
-                <div class="card m-4 shadow rounded gradient">
+                <div class="card m-4 shadow rounded">
                     <img src="{{ critic.album.images[0].url }}" alt="Cover">
                
                     <div class="card-body">
@@ -86,7 +86,6 @@
     </div>
 
 {% endblock %}
-
 
 {% block javascripts %}
     <script src="{{ asset('assets/javaScript/like.js') }}"></script>

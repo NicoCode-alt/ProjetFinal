@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn_view_critic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.margin_title {
+    margin-top: 4rem;
+}
+
+.btn_content {
+    text-align: center;
+}

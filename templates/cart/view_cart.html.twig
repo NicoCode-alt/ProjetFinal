@@ -37,8 +37,9 @@
                 </tr>   
             </tfoot>
         </table>
-
-            <a href="{{ path('pay_cart') }}" class="btn btn-success">Commander</a>
+            
+            <a href="{{ path('store') }}" class="btn btn-primary btn-sm">Continuer vos achats</a>
+            <a href="{{ path('pay_cart') }}" class="btn btn-success btn-sm">Commander</a>
 
     {% else %}
         <section class="container_view_cart mt-4">
@@ -48,6 +49,7 @@
                         <div class="col-12 title_view_cart_h2">
                             <img class="logo_smiley" src="{{ asset('assets/images/smiley_choquer.png') }}" alt="logo d'un smiley choquer">
                             <h2>Surprise, c'est vide !</h2>
+                            <a href="{{ path('store') }}" class="btn btn-primary mt-5">Faire ses achats</a>
                         </div>
                     </div>
                 </div>
