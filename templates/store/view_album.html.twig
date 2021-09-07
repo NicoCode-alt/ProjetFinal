@@ -89,6 +89,7 @@
         </table>
     </div>
 
+    {% if app.user %}
     {# Partie formulaire #}
     <div class="row">
         <div class="col-2"></div>
@@ -116,4 +117,11 @@
             </div>
         <div class="col-2"></div>
     </div>
+    {% else %}
+        <p class="text-center mt-3">Veuillez vous connecter pour ajouter une critique.</p>
+        <div class="btn_content">
+            <a href="{{ path('login') }}" class="btn btn-primary ">Connexion</a>
+        </div>
+    {% endif %}
+
 {% endblock %}
