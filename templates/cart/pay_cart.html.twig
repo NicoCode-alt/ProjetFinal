@@ -31,8 +31,36 @@
     </div>
 
     <hr>
+    <h2>Formulaire de paiement</h2>
+      <form action="#" method="post" style="width:50vw;" class="container justify-content-center">
+        <div class="container d-flex justify-content-around py-2">
+          <input type="text" name="firstname" id="firstname" placeholder="Jean">
+          <input type="text" name="lastname" id="lastname" placeholder="Dupont">
+        </div>
+        <div class="container">
+          <textArea name="address" id="adress" placeholder="Adresse" class="container-fluid"></textArea>
+        </div>
+        <div class="container d-flex justify-content-around py-2">
+          <input type="text" name="zip" id="wip" placeholder="Code postal">
+          <input type="text" name="city" id="city" placeholder="Ville">
+          <input type="text" name="country" id="country" placeholder="Pays">
+        </div>
+        <hr>
+        <div>
+          
+        </div>
+          <div class="container d-flex justify-content-around py-2">
+            <input type="number" name="cardNumber" id="cardNumber" placeholder="Numéro de carte bleue">
+            <input type="number" format name="expirationMonth" id="expirationMonth" min="2" max="2" placeholder="12" style="5rem;">/
+            <input type="number" format name="expirationYear" id="expirationYear" min="2" max="2" placeholder="25">
+            <input type="number" name="secretCode" id="secretCode" min="3" max="3" placeholder="123">
+          </div>
+          <div class="d-flex justify-content-end pt-2">
+            <button type="submit" class="btn btn-success btn-lg" >Valider le paiement</button>
+          </div>
+      </form>
 
-    <form action="{{ path('paiement_load', {'id':orderId}) }}" method="post" id="payment-form">
+    {# <form action="{{ path('paiement_load', {'id':orderId}) }}" method="post" id="payment-form">
       <div class="form-row">
         <div id="card-elements"></div>
 
@@ -44,98 +72,98 @@
       <button class="btn btn-primary mt-4">
           Acheter {{ finalPrice }} euros
       </button>
-    </form>
+    </form> #}
 
 {% endblock %}
 
 {% block JavaScript %}
 
-  <script>
-    var stripeToken = "{{ stripe_public_key_test }}";
+  // <script>
+  //   var stripeToken = "{{ stripe_public_key_test }}";
 
-    var stripe = Stripe(stripeToken);
-    var elements = stripe.elements();
-    var subscription = "{{ items.orderId }}";
-    var clientSecret = {{ intentScret }};
-    var cardholderName = {{ app.user.lastname }};
-    var cardholderEmail = {{ app.user.email }};
+  //   var stripe = Stripe(stripeToken);
+  //   var elements = stripe.elements();
+  //   var subscription = "{{ items.orderId }}";
+  //   var clientSecret = {{ intentScret }};
+  //   var cardholderName = {{ app.user.lastname }};
+  //   var cardholderEmail = {{ app.user.email }};
 
-    var styleCustom = {
-      base:{
-        fontSize: '16px',
-        color: '#25332d'
-      }
-    }
+  //   var styleCustom = {
+  //     base:{
+  //       fontSize: '16px',
+  //       color: '#25332d'
+  //     }
+  //   }
 
-    var card = elements.create('card', {style: styleCustom});
+  //   var card = elements.create('card', {style: styleCustom});
 
-    card.mount("#card-elements");
+  //   card.mount("#card-elements");
 
-    card.addEventListener('change', function(event){
-      var displayError = document.getElementById('card-errors');
+  //   card.addEventListener('change', function(event){
+  //     var displayError = document.getElementById('card-errors');
 
-      if(event.error) {
-        displayError.textContent = event.error.message;
-      } else {
-        displayError.textContent = "";
-      }
-    });
+  //     if(event.error) {
+  //       displayError.textContent = event.error.message;
+  //     } else {
+  //       displayError.textContent = "";
+  //     }
+  //   });
 
-  var form = document.getElementById('payment-form');
+  // var form = document.getElementById('payment-form');
 
-  form.addEventListener('submit', function(event) => {
-    event.preventDefault();
+  // form.addEventListener('submit', function(event) => {
+  //   event.preventDefault();
 
-    stripe.handleCardPayment(
-      clientSecret,
-      card,
-      {
-        paiement_method_data: {
-          billing_details:{
-            name: cardholderName,
-            email: cardholderEmail
-          }
-        }
-      }
-    ).then((result)=>{
-      if(result.error){
+  //   stripe.handleCardPayment(
+  //     clientSecret,
+  //     card,
+  //     {
+  //       paiement_method_data: {
+  //         billing_details:{
+  //           name: cardholderName,
+  //           email: cardholderEmail
+  //         }
+  //       }
+  //     }
+  //   ).then((result)=>{
+  //     if(result.error){
 
-      } else if ('paymentIntent' in result){
-        stripeTokenHandler(result.paymentIntent);
-      }
-    })
-  });
+  //     } else if ('paymentIntent' in result){
+  //       stripeTokenHandler(result.paymentIntent);
+  //     }
+  //   })
+  // });
 
-  function stripeTokenHandler(intent){
-    var form = document.getElementById('payment-form');
-    var inputIntentId = document.createElement('input') ;
-    var inputIntentPaymentMethod = document.createElement('input');
-    var inputIntentStatus = document.createElement('input');
-    var inputSubscription = document.createElement('input');
+  // function stripeTokenHandler(intent){
+  //   var form = document.getElementById('payment-form');
+  //   var inputIntentId = document.createElement('input') ;
+  //   var inputIntentPaymentMethod = document.createElement('input');
+  //   var inputIntentStatus = document.createElement('input');
+  //   var inputSubscription = document.createElement('input');
 
-    inputIntentPaymentMethod.setAttribute('type', 'hidden');
-    inputIntentPaymentMethod.setAttribute('name', 'stripeIntentPaymentMethod');
-    inputIntentPaymentMethod.setAttribute('value', 'intent.payment-method');
+  //   inputIntentPaymentMethod.setAttribute('type', 'hidden');
+  //   inputIntentPaymentMethod.setAttribute('name', 'stripeIntentPaymentMethod');
+  //   inputIntentPaymentMethod.setAttribute('value', 'intent.payment-method');
 
-    inputIntentId.setAttribute('type', 'hidden');
-    inputIntentId.setAttribute('name', 'stripeIntentId');
-    inputIntentId.setAttribute('value', 'intent.id');
+  //   inputIntentId.setAttribute('type', 'hidden');
+  //   inputIntentId.setAttribute('name', 'stripeIntentId');
+  //   inputIntentId.setAttribute('value', 'intent.id');
 
-    inputIntentStatus.setAttribute('type', 'hidden');
-    inputIntentStatus.setAttribute('name', 'stripeIntentStatus');
-    inputIntentStatus.setAttribute('value', 'intent.status');
+  //   inputIntentStatus.setAttribute('type', 'hidden');
+  //   inputIntentStatus.setAttribute('name', 'stripeIntentStatus');
+  //   inputIntentStatus.setAttribute('value', 'intent.status');
 
-    inputSubscription.setAttribute('type', 'hidden');
-    inputSubscription.setAttribute('name', 'subscription');
-    inputSubscription.setAttribute('value', 'subscription');
+  //   inputSubscription.setAttribute('type', 'hidden');
+  //   inputSubscription.setAttribute('name', 'subscription');
+  //   inputSubscription.setAttribute('value', 'subscription');
 
-    form.appendChild(inputIntentPaymentMethod);
-    form.appendChild(inputIntentId);
-    form.appendChild(inputIntentStatus);
-    form.appendChild(inputSubscription);
-    form.submit();
+  //   form.appendChild(inputIntentPaymentMethod);
+  //   form.appendChild(inputIntentId);
+  //   form.appendChild(inputIntentStatus);
+  //   form.appendChild(inputSubscription);
+  //   form.submit();
 
-  }
+  // }
 
-  </script>
+  // </script>
   {% endblock %}

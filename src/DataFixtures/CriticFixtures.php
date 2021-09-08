@@ -16,7 +16,6 @@ class CriticFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
-
         $users = [];
         $albums = [
         '159ORixBSSemxiualv1Woj',
@@ -34,8 +33,8 @@ class CriticFixtures extends Fixture
         '3jQX0XtNGeIQ06GX4Ren9l',
         '5IYhB6cNGiCogm6tcMRhBW'
     ];
-
-        for ($i = 0 ; $i<20; $i++){
+        for ($i = 0 ; $i<20; $i++)
+        {
             $user = new User();
             $user->setUsername(uniqid($faker->firstName))
                 ->setFirstname($faker->firstName)
@@ -47,12 +46,10 @@ class CriticFixtures extends Fixture
             $manager->persist($user);
             $users[] = $user;
         }
-
-        for($j = 0 ; $j < 20; $j++){
-
+        for($j = 0 ; $j < 20; $j++)
+        {
             $critic = new Critic();
-        
-            $critic->setContent($faker->realText(200, 2))
+            $critic->setContent($faker->realText(300, 2))
             ->setCreatedAt(new \DateTime())
             ->setUser($users[random_int(0, count($users) - 1)])
             ->setAlbumId($albums[random_int(0, count($albums) - 1)])
@@ -60,7 +57,8 @@ class CriticFixtures extends Fixture
 
             $manager->persist($critic);
 
-            foreach($users as $user ){
+            foreach($users as $user )
+            {
                 if (rand(0,5) >= 2){
                     $like = new Like();
                     $like->setCritic($critic)
@@ -74,7 +72,7 @@ class CriticFixtures extends Fixture
                 }
                 for($k = 0; $k < 3; $k++){
                     $comment = new Commentary();
-                    $comment->setContent($faker->realText(200, 2))
+                    $comment->setContent($faker->realText(300, 2))
                         ->setUser($user)
                         ->setCreatedAt(new \Datetime('now'))
                         ->setCritic($critic);
